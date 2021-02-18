@@ -1,0 +1,23 @@
+{
+  "name": "fatscarbsprots",
+  "version": "1.0.0",
+  "description": "Here you can look how many carbs, calories, prots and fats includes in restourants food",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Exerbaind/FatsCarbsProts.git"
+  },
+  "keywords": [
+    "healthy",
+    "life"
+  ],
+  "author": "Dima Shamal <digr98@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Exerbaind/FatsCarbsProts/issues"
+  },
+  "homepage": "https://github.com/Exerbaind/FatsCarbsProts#readme"
+}
