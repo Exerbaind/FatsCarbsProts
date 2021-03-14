@@ -1,0 +1,176 @@
+.login__container {
+  position: fixed;
+  top: 60px;
+  background-color: $cBackground;
+  border-radius: 10px;
+  padding: 20px 40px;
+  width: 300px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  z-index: 20;
+  @media screen and (max-width: 500px) {
+    width: 95%;
+    z-index: 50;
+  }
+}
+.login__container--show {
+  animation: forwards loginFadeIn $transition;
+}
+
+.login__container--hide {
+  animation: forwards loginFadeOut $transition;
+}
+
+.login__form {
+  input {
+    margin-top: 15px;
+    box-sizing: border-box;
+  }
+}
+
+.form__title {
+  text-align: center;
+  font-size: $tBig;
+  color: $cBlack;
+}
+
+.form__input {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 10px;
+  outline: none;
+  color: $cBlack;
+  font-size: 16px;
+  transition: 0.3s;
+  width: 100%;
+  &:focus {
+    background-color: $cMain;
+    color: white;
+    border: 1px solid transparent;
+    &::placeholder {
+      color: white;
+    }
+  }
+}
+
+.form__input--full {
+  border: 1px solid $cMain;
+}
+
+.form__input--error {
+  border: 1px solid red;
+}
+
+.form__submit {
+  width: 100%;
+  background-color: $cMain;
+  color: white;
+  border: none;
+  font-size: $tSmall;
+  padding: 10px;
+  border-radius: 10px;
+  opacity: 1;
+  transition: 0.3s;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    box-shadow: none;
+  }
+  &:active {
+    box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+    opacity: 1;
+  }
+}
+
+.form__error {
+  font-size: 12px;
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+  animation: forwards errorFadeIn $transition;
+}
+
+.login__close {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+  background-color: $cMain;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    span {
+      transform: rotate(180deg) translateY(-2px);
+    }
+  }
+  &:active {
+    box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  }
+  span {
+    height: 0px;
+    margin-top: -2px;
+    width: 15px;
+    background-color: white;
+    position: relative;
+    transition: $transition;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background-color: white;
+      transform: rotate(-45deg);
+    }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background-color: white;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+@keyframes loginFadeIn {
+  0% {
+    opacity: 0;
+    right: -25px;
+  }
+  100% {
+    opacity: 1;
+    right: 10px;
+  }
+}
+
+@keyframes loginFadeOut {
+  0% {
+    opacity: 1;
+    right: 10px;
+  }
+  100% {
+    opacity: 0;
+    right: -25px;
+  }
+}
+
+@keyframes errorFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

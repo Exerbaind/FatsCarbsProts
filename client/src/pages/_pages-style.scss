@@ -1,0 +1,33 @@
+.page__title {
+  font-size: 54px;
+  @media screen and (max-width: 700px) {
+    font-size: 36px;
+  }
+}
+.place__list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 20px 0;
+  flex-wrap: wrap;
+}
+.empty__list {
+  font-size: 24px;
+  color: $cBlack;
+  text-align: center;
+  margin: 100px auto;
+  @media screen and (max-width: 700px) {
+    font-size: 20px;
+  }
+}
+
+.dish__list {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 20px 0;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  @media screen and (max-width: 1155px) {
+    margin-left: 0;
+    justify-content: space-between;
+  }
+}

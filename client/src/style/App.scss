@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@import "./variables";
+// Шрифты
+// @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+//
+
+body {
+  font-family: $fontFamily;
+}
+@import "../layouts/page-container-layout";
+@import "../pages/pages-style";
+@import "../components/restaurant-card/restaurant-card";
+@import "../components/dish-card/dish-card";
+@import "../components/basket/basket-dishes/basket-dishes";
+@import "../pages/restaurant-page/restaurant-page";
+@import "../components/preloader/preloader";
+@import "../components/message/message";
+@import "../components/basket/basket";
+@import "../components/navbar/navbar";
+@import "../components/search/searchField";
+@import "../components/login-window/login-window";
+@import "../components/application-components/application-button/application-btn";

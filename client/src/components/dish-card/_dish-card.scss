@@ -1,0 +1,154 @@
+.dish-card {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: $cBackground;
+  transition: 0.3s;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  width: 31.6%;
+  animation: forwards fadeIn $transition;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  @media screen and (max-width: 1155px) {
+    width: 49%;
+    margin-left: 0;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+  &:hover {
+    background-color: white;
+  }
+  &__name {
+    font-size: 24px;
+    text-align: center;
+    line-height: 30px;
+    @media screen and (max-width: 1155px) {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+  &__restaurant {
+    font-size: 16px;
+    color: rgb(190, 190, 190);
+    text-align: center;
+    margin: 5px 0;
+  }
+  &__parameter {
+    color: $cBlack;
+    font-size: 16px;
+    margin-top: 10px;
+    span {
+      color: $cMain;
+    }
+  }
+  &__nutritional {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .nutritional__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+  }
+  .nutritional__name {
+    color: $cMain;
+    font-weight: bold;
+  }
+  .nutritional__value {
+    font-weight: bold;
+  }
+  .dish-card__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    .dish-card__to-favourite {
+      width: 10%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 80%;
+      }
+    }
+    .application-button {
+      width: 85%;
+      padding: 12px;
+      font-size: 18px;
+      @media screen and (max-width: 1155px) {
+        font-size: 16px;
+      }
+    }
+    .dish-card__delete-dish {
+      width: 85%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: $cRed;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      opacity: 1;
+      transition: 0.3s;
+      cursor: pointer;
+      outline: none;
+      @media screen and (max-width: 1155px) {
+        font-size: 16px;
+      }
+      &:hover {
+        transform: scale(1.02);
+      }
+      &:active {
+        box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+        transform: scale(1);
+      }
+    }
+  }
+  .dish-card__favorite-icon {
+    fill: rgb(220, 220, 220);
+    transition: 0.3s;
+    &--active {
+      fill: $cRed;
+    }
+    &:hover {
+      transform: scale(1.04);
+    }
+    &:active {
+      transform: scale(1);
+    }
+  }
+  .dish-card__error {
+    color: $cMain;
+    font-size: 14px;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
