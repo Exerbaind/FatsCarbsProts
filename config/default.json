@@ -1,0 +1,6 @@
+{
+    "port": 5000,
+    "mongoURL" : "mongodb+srv://Dima:354040126healthy@cluster0.m8etf.mongodb.net/fatscarbsprots?retryWrites=true&w=majority",
+    "jwtSecret": "Healthy web application",
+    "baseURL": "http://localhost:5000"
+}
