@@ -793,8 +793,7 @@ body {
   left: -400px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  top: 50px;
-  padding-bottom: 50px;
+  bottom: 0;
 }
 
 @media screen and (max-width: 700px) {
@@ -834,6 +833,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding-top: 70px;
 }
 
 @media screen and (max-width: 700px) {
@@ -941,7 +941,7 @@ body {
 
 .basket__icon {
   position: absolute;
-  bottom: 70px;
+  bottom: 20px;
   left: 420px;
   height: 70px;
   width: 70px;
@@ -966,9 +966,6 @@ body {
 @media screen and (max-width: 700px) {
   .basket__icon {
     left: 102vw;
-    bottom: 120px;
-    height: 60px;
-    width: 60px;
   }
 }
 
