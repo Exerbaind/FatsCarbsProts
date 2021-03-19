@@ -19,9 +19,11 @@ const Basket = () => {
 
   function openBasket() {
     dispatch(openBasketAction);
+    document.body.style.overflow = "hidden";
   }
   function closeBasket() {
     dispatch(closeBasketAction);
+    document.body.style.overflow = "auto";
   }
   // function clearBasket() {
   //   basketItems.map((item) => (item.inBasket = false));
