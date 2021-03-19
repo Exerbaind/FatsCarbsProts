@@ -16,7 +16,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .inner-container {
@@ -1246,8 +1246,8 @@ body {
   height: 2px;
   background-color: #92bd88;
   display: block;
-  -webkit-transform: translateY(12px);
-          transform: translateY(12px);
+  -webkit-transform: translateY(13px);
+          transform: translateY(13px);
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -1268,8 +1268,8 @@ body {
   height: 2px;
   background-color: #92bd88;
   display: block;
-  -webkit-transform: translateY(12px);
-          transform: translateY(12px);
+  -webkit-transform: translateY(13px);
+          transform: translateY(13px);
 }
 
 .navbar__login {
