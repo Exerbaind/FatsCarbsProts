@@ -854,6 +854,12 @@ body {
   text-align: center;
 }
 
+@media screen and (max-width: 700px) {
+  .basket__title {
+    margin-top: 70px;
+  }
+}
+
 .basket__goods {
   margin-top: 10px;
   display: -webkit-box;
@@ -865,6 +871,12 @@ body {
           flex-direction: column;
   overflow: auto;
   height: 90%;
+}
+
+@media screen and (max-width: 700px) {
+  .basket__goods {
+    margin-top: 70px;
+  }
 }
 
 .basket__empty {
