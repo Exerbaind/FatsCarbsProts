@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const User = require("../models/User");
+const AdminUser = require("../models/AdminUser");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const router = Router();
@@ -7,9 +8,17 @@ const auth = require("../middleware/auth_middleware");
 
 router.post("/favorite", auth, async (req, res) => {
   let dish = req.body.dish;
-  const user = await User.findOne({
-    _id: req.user.userId,
-  });
+  let user;
+  if (req.user.userId === "60579cfd6716641249bc6ea6") {
+    user = await AdminUser.findOne({
+      _id: req.user.userId,
+    });
+  } else {
+    user = await User.findOne({
+      _id: req.user.userId,
+    });
+  }
+
   let existing = user.favorites_dishes.filter((item) => item.id === dish.id);
 
   if (existing.length) {
@@ -25,9 +34,17 @@ router.post("/favorite", auth, async (req, res) => {
 });
 
 router.get("/favorite", auth, async (req, res) => {
-  const dishes = await User.findOne({
-    _id: req.user.userId,
-  });
+  let dishes;
+  if (req.user.userId === "60579cfd6716641249bc6ea6") {
+    dishes = await AdminUser.findOne({
+      _id: req.user.userId,
+    });
+  } else {
+    dishes = await User.findOne({
+      _id: req.user.userId,
+    });
+  }
+
   res.json(dishes.favorites_dishes);
 });
 

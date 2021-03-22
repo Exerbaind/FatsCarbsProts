@@ -6,6 +6,11 @@ import {
   deleteDishAction,
 } from "../../actions/basketAction";
 import {
+  setCurrentDishAction,
+  openFormAction,
+  closeFormAction,
+} from "../../actions/editActions";
+import {
   messageShowAction,
   messageHideAction,
 } from "../../actions/dataActions";
@@ -41,6 +46,11 @@ const DishCard = ({ dish }) => {
     dispatch(deleteDishAction(basketList, dish, kcal, prots, fats, carbs, 1));
     dish.inBasket = false;
   }
+
+  const editDishData = async (dish) => {
+    dispatch(openFormAction);
+    dispatch(setCurrentDishAction(dish));
+  };
 
   const favoriteDishHandler = async () => {
     if (dish.inBasket === false) {
@@ -176,7 +186,9 @@ const DishCard = ({ dish }) => {
           </svg>
         </div>
       </div>
-      <button className="dish-card__error">Не верные данные ?</button>
+      <button className="dish-card__error" onClick={() => editDishData(dish)}>
+        Не верные данные ?
+      </button>
     </div>
   );
 };

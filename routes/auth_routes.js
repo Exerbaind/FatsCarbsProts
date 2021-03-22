@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const User = require("../models/User");
+const AdminUser = require("../models/AdminUser");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
@@ -28,6 +29,48 @@ router.post(
 
       const user = await User.findOne({ email });
 
+      if (email === "digr98@gmail.com") {
+        const adminUser = await AdminUser.findOne({ email });
+        if (adminUser) {
+          const isMatch = await bcrypt.compare(password, adminUser.password);
+
+          if (!isMatch) {
+            return res
+              .status(400)
+              .json({ message: "Неверные данные, попробуйте снова" }); // потом изменить
+          }
+
+          const token = jwt.sign(
+            { userId: adminUser.id },
+            config.get("jwtSecret"),
+            {
+              expiresIn: "89666h",
+            }
+          );
+
+          return res.json({ token, userId: user.id, admin: true });
+        } else {
+          const hashedPassword = await bcrypt.hash(password, 12);
+
+          const adminUser = new AdminUser({
+            email: email,
+            password: hashedPassword,
+          });
+
+          await adminUser.save();
+          const token = jwt.sign(
+            { userId: adminUser.id },
+            config.get("jwtSecret"),
+            {
+              expiresIn: "1h",
+            }
+          );
+          return res
+            .status(201)
+            .json({ token, userId: adminUser.id, admin: true });
+        }
+      }
+
       if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
 
@@ -40,7 +83,8 @@ router.post(
         const token = jwt.sign({ userId: user.id }, config.get("jwtSecret"), {
           expiresIn: "89666h",
         });
-        res.json({ token, userId: user.id });
+
+        return res.json({ token, userId: user.id });
       } else {
         const hashedPassword = await bcrypt.hash(password, 12);
 

@@ -41,6 +41,9 @@ const RegisterPage = () => {
     try {
       await axios.post("/api/auth/login", { ...form }).then((jwt) => {
         localStorage.setItem("token", jwt.data.token);
+        if (jwt.data.admin) {
+          localStorage.setItem("admin", jwt.data.admin);
+        }
         window.location.reload();
       });
     } catch (error) {

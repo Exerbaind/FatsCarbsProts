@@ -8,11 +8,13 @@ import "./style/App.css";
 import PageContainerLayout from "./layouts/PageContainerLayout";
 import Basket from "./components/basket/basket";
 import Message from "./components/message/message";
+import DishEdit from "./components/forms/DishEdit";
 
 function App() {
   const loginWindowHandler = useSelector(
     (state) => state.auth.loginWindowHandler
   );
+  const formVisibility = useSelector((state) => state.edit.isShown);
   const message = useSelector((state) => state.api.message);
 
   return (
@@ -24,6 +26,7 @@ function App() {
       {loginWindowHandler && <LoginWindow />}
       <PageContainerLayout />
       <Basket />
+      {formVisibility && <DishEdit />}
       {/* <Footer /> */}
     </BrowserRouter>
   );

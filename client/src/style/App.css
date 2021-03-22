@@ -87,6 +87,92 @@ body {
   }
 }
 
+.restaurant-page__title {
+  font-size: 54px;
+}
+
+.restaurant-page__list-title {
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+.restaurant-page__menu-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0 0 20px 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: -20px;
+}
+
+.edit {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dish-card__edit-delete {
+  background-color: #92bd88;
+  color: white;
+  border: none;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  outline: none;
+  background-color: #d50000;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.dish-card__edit-delete:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.dish-card__edit-delete:active {
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+          box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.dish-card__edit-refresh {
+  background-color: #92bd88;
+  color: white;
+  border: none;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  outline: none;
+  background-color: #92bd88;
+  width: 100%;
+}
+
+.dish-card__edit-refresh:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.dish-card__edit-refresh:active {
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+          box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 .place__card {
   -webkit-animation: forwards fadeIn 0.3s;
           animation: forwards fadeIn 0.3s;
@@ -700,28 +786,6 @@ body {
           transform: scale(0.97);
 }
 
-.restaurant-page__title {
-  font-size: 54px;
-}
-
-.restaurant-page__list-title {
-  font-size: 36px;
-  margin-top: 20px;
-}
-
-.restaurant-page__menu-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 0 0 20px 0;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-left: -20px;
-}
-
 .preloader__container {
   position: fixed;
   z-index: 1;
@@ -853,6 +917,12 @@ body {
   text-align: center;
 }
 
+@media screen and (max-width: 700px) {
+  .basket__title {
+    margin-top: 90px;
+  }
+}
+
 .basket__goods {
   margin-top: 10px;
   display: -webkit-box;
@@ -863,12 +933,12 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: auto;
-  height: 90%;
+  height: 85%;
 }
 
 @media screen and (max-width: 700px) {
   .basket__goods {
-    padding-top: 50px;
+    padding-top: 30px;
   }
 }
 
@@ -887,6 +957,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-top: 5px;
+  height: 15%;
 }
 
 .basket__nutritional-item {
@@ -1686,5 +1757,156 @@ body {
           box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.request-form__container {
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+}
+
+.request-form__container--active {
+  -webkit-animation: forwards FadeIn 0.3s;
+          animation: forwards FadeIn 0.3s;
+}
+
+.request-form__container--hide {
+  -webkit-animation: forwards FadeOut 0.3s;
+          animation: forwards FadeOut 0.3s;
+}
+
+.request-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  min-width: 320px;
+  position: relative;
+}
+
+@media screen and (max-width: 360px) {
+  .request-form {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+  }
+}
+
+.request-form__row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 10px;
+}
+
+.request-form__label {
+  font-size: 18px;
+}
+
+.request-form__input {
+  margin-top: 5px;
+  padding: 8px;
+  background-color: #f6f6f6;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 10px;
+  font-size: 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.request-form__input:focus {
+  background-color: white;
+  border: 1px solid #92bd88;
+}
+
+.request-form__submit {
+  background-color: #92bd88;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #92bd88;
+  margin-top: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.request-form__submit:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.request-form__submit:active {
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+          box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+@-webkit-keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes FadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes FadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes errorFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=App.css.map */

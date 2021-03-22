@@ -11,12 +11,18 @@
 body {
   font-family: $fontFamily;
 }
+// Шаблоны
 @import "../layouts/page-container-layout";
+
+// Страницы
 @import "../pages/pages-style";
+@import "../pages/restaurant-page/restaurant-page";
+@import "../pages/editing-pages/editing-pages";
+
+// Компоненты
 @import "../components/restaurant-card/restaurant-card";
 @import "../components/dish-card/dish-card";
 @import "../components/basket/basket-dishes/basket-dishes";
-@import "../pages/restaurant-page/restaurant-page";
 @import "../components/preloader/preloader";
 @import "../components/message/message";
 @import "../components/basket/basket";
@@ -24,3 +30,4 @@ body {
 @import "../components/search/searchField";
 @import "../components/login-window/login-window";
 @import "../components/application-components/application-button/application-btn";
+@import "../components/forms/forms";

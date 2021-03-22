@@ -1,6 +1,7 @@
 const initialState = {
   token: localStorage.getItem("token") || null,
   loginWindowHandler: false,
+  admin: localStorage.getItem("admin") || null,
 };
 
 const authReducer = (state = initialState, action) => {

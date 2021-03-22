@@ -9,8 +9,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const [mobileMenuHandler, setMobileMenuHandler] = useState(false);
   const isLogged = useSelector((state) => state.auth.token);
+  const isAdmin = useSelector((state) => state.auth.admin);
   function logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("admin");
     window.location.reload();
   }
 
@@ -75,7 +77,18 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               )}
-              {isLogged && (
+              {isAdmin && (
+                <li className="navigation__item">
+                  <NavLink
+                    to="/resolve/food-edit"
+                    className="navigation__link"
+                    activeClassName="navigation__link--active"
+                  >
+                    Запросы
+                  </NavLink>
+                </li>
+              )}
+              {/* {isLogged && (
                 <li className="navigation__item">
                   <NavLink
                     to="/profile"
@@ -85,7 +98,7 @@ const Navbar = () => {
                     Профиль
                   </NavLink>
                 </li>
-              )}
+              )} */}
             </ul>
           </nav>
         </div>

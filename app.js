@@ -10,6 +10,7 @@ app.use(cors());
 
 app.use("/api/auth", require("./routes/auth_routes"));
 app.use("/api/dishes", require("./routes/dish_routes"));
+app.use("/api/edit", require("./routes/databaseEdit_routes"));
 
 app.use(async (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
