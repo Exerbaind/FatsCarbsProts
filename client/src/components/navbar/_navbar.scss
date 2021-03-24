@@ -10,7 +10,6 @@
   display: flex;
   justify-content: center;
   transition: 0.3;
-  // overflow: hidden;
 }
 .navbar__container {
   display: flex;
@@ -21,7 +20,7 @@
   @media screen and (max-width: 1200px) {
     width: 100%;
   }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     padding: 0 10px;
     flex-wrap: wrap;
   }
@@ -29,7 +28,7 @@
 
 .navbar__mobile {
   display: none;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +88,7 @@
   align-items: center;
   flex: 8;
   justify-content: center;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     // order: 3;
     width: 100%;
     flex: none;
@@ -115,7 +114,7 @@
   display: flex;
   list-style: none;
   margin-left: 200px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     margin-left: 0;
     flex-direction: column;
     justify-content: center;
@@ -126,7 +125,7 @@
 
 .navigation__item {
   margin-left: 30px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     margin-left: 0;
     width: 100%;
     margin-top: 50px;
@@ -142,7 +141,7 @@
   font-size: 18px;
   position: relative;
   transition: 0.3s;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     font-size: 60px;
     text-transform: uppercase;
   }
@@ -179,18 +178,13 @@
 }
 
 .navbar__login {
-  flex: 2;
+  flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   button {
     font-size: 18px;
-    @media screen and (max-width: 700px) {
-      &:first-child {
-        margin-right: 15px;
-      }
-    }
   }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 950px) {
     flex: 6;
     order: 2;
     width: 85%;

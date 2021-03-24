@@ -30,27 +30,19 @@ const AddPageItem = ({ dish }) => {
       <div className="dish-card__nutritional">
         <div className="nutritional__item">
           <p className="nutritional__name">калории</p>
-          <p className="nutritional__value">
-            {parseInt(dish.kcals, 10).toFixed(2)}
-          </p>
+          <p className="nutritional__value">{dish.kcals.toFixed(2)}</p>
         </div>
         <div className="nutritional__item">
           <p className="nutritional__name">белки</p>
-          <p className="nutritional__value">
-            {parseInt(dish.prots, 10).toFixed(2)}
-          </p>
+          <p className="nutritional__value">{dish.prots.toFixed(2)}</p>
         </div>
         <div className="nutritional__item">
           <p className="nutritional__name">жиры</p>
-          <p className="nutritional__value">
-            {parseInt(dish.fats, 10).toFixed(2)}
-          </p>
+          <p className="nutritional__value">{dish.fats.toFixed(2)}</p>
         </div>
         <div className="nutritional__item">
           <p className="nutritional__name">углеводы</p>
-          <p className="nutritional__value">
-            {parseInt(dish.carbs, 10).toFixed(2)}
-          </p>
+          <p className="nutritional__value">{dish.carbs.toFixed(2)}</p>
         </div>
       </div>
       <div className="dish-card__actions edit">

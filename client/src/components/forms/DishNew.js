@@ -47,9 +47,18 @@ const DishNew = () => {
   }
   function formHandler(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
+    console.log(event.target.value);
   }
   async function sendDish(event) {
     event.preventDefault();
+    if (form.size === "на 100 грамм") {
+      form.kcals = form.kcals * (form.weight / 100);
+      form.prots = form.prots * (form.weight / 100);
+      form.fats = form.fats * (form.weight / 100);
+      form.carbs = form.carbs * (form.weight / 100);
+    } else {
+      return form;
+    }
     await axios.post("/api/new/add", {
       dish: form,
     });
