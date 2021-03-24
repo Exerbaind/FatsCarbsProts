@@ -1784,6 +1784,13 @@ body {
   position: fixed;
 }
 
+@media screen and (max-width: 700px) {
+  .request-form__container {
+    top: 0;
+    height: auto;
+  }
+}
+
 .request-form__container--active {
   -webkit-animation: forwards FadeIn 0.3s;
           animation: forwards FadeIn 0.3s;
@@ -1808,9 +1815,9 @@ body {
       flex-wrap: wrap;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .request-form {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     overflow: auto;
   }

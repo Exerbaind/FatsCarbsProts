@@ -9,6 +9,10 @@
   bottom: 0;
   left: 0;
   position: fixed;
+  @media screen and (max-width: 700px) {
+    top: 0;
+    height: auto;
+  }
   &--active {
     animation: forwards FadeIn $transition;
   }
@@ -25,8 +29,8 @@
   overflow: auto;
   justify-content: space-between;
   flex-wrap: wrap;
-  @media screen and (max-width: 600px) {
-    height: 100vh;
+  @media screen and (max-width: 700px) {
+    height: 100%;
     width: 100vw;
     overflow: auto;
   }
