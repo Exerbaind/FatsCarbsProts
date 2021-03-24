@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteEditDishAction } from "../../../actions/editActions";
+import { deleteNewDishAction } from "../../../actions/editActions";
 import axios from "axios";
-const EditPageItem = ({ dish }) => {
+const AddPageItem = ({ dish }) => {
   const dispatch = useDispatch();
-  const editDishes = useSelector((state) => state.edit.editDishesList);
+  const newDishes = useSelector((state) => state.edit.newDishesList);
 
   async function deleteDish(dish, list) {
-    await axios.post("/api/edit/edit-dish/delete", {
+    await axios.post("/api/new/delete", {
       dish: dish,
     });
-    dispatch(deleteEditDishAction(dish, list));
+    dispatch(deleteNewDishAction(dish, list));
   }
 
   return (
@@ -19,6 +19,11 @@ const EditPageItem = ({ dish }) => {
       <p className="dish-card__parameter">
         <span>Вес:</span> {dish.weight} грамм
       </p>
+      {dish.price && (
+        <p className="dish-card__parameter">
+          <span>Цена:</span> {dish.price}
+        </p>
+      )}
       <p className="dish-card__parameter">
         <span>Расчет БЖУ:</span> {dish.size}
       </p>
@@ -49,10 +54,10 @@ const EditPageItem = ({ dish }) => {
         </div>
       </div>
       <div className="dish-card__actions edit">
-        <button className="dish-card__edit-refresh">Обновить блюдо</button>
+        <button className="dish-card__edit-refresh">Добавить блюдо</button>
         <button
           className="dish-card__edit-delete"
-          onClick={() => deleteDish(dish, editDishes)}
+          onClick={() => deleteDish(dish, newDishes)}
         >
           Удалить
         </button>
@@ -61,4 +66,4 @@ const EditPageItem = ({ dish }) => {
   );
 };
 
-export default EditPageItem;
+export default AddPageItem;

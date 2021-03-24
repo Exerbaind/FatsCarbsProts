@@ -27,10 +27,10 @@ export const incrementDishAction = (kcal, prots, fats, carbs, dish) => async (
   dispatch({
     type: "INCREMENT_DISH",
     payload: {
-      totalKcal: kcal + dish.nutritional_value.kcal,
-      totalProts: prots + dish.nutritional_value.prots,
-      totalFats: fats + dish.nutritional_value.fats,
-      totalCarbs: carbs + dish.nutritional_value.carbs,
+      totalKcal: kcal + dish.kcals,
+      totalProts: prots + dish.prots,
+      totalFats: fats + dish.fats,
+      totalCarbs: carbs + dish.carbs,
     },
   });
 };
@@ -41,10 +41,10 @@ export const decrementDishAction = (kcal, prots, fats, carbs, dish) => async (
   dispatch({
     type: "DECREMENT_DISH",
     payload: {
-      totalKcal: kcal - dish.nutritional_value.kcal,
-      totalProts: prots - dish.nutritional_value.prots,
-      totalFats: fats - dish.nutritional_value.fats,
-      totalCarbs: carbs - dish.nutritional_value.carbs,
+      totalKcal: kcal - dish.kcals,
+      totalProts: prots - dish.prots,
+      totalFats: fats - dish.fats,
+      totalCarbs: carbs - dish.carbs,
     },
   });
 };
@@ -68,15 +68,15 @@ export const deleteDishAction = (
   carbs,
   dishCount
 ) => async (dispatch) => {
-  const filteredBasket = itemsList.filter((item) => item.id !== dish.id);
+  const filteredBasket = itemsList.filter((item) => item._id !== dish._id);
   dispatch({
     type: "DELETE_DISH",
     payload: {
       basketItems: filteredBasket,
-      totalKcal: Math.abs(kcal - dish.nutritional_value.kcal * dishCount),
-      totalProts: Math.abs(prots - dish.nutritional_value.prots * dishCount),
-      totalFats: Math.abs(fats - dish.nutritional_value.fats * dishCount),
-      totalCarbs: Math.abs(carbs - dish.nutritional_value.carbs * dishCount),
+      totalKcal: Math.abs(kcal - dish.kcals * dishCount),
+      totalProts: Math.abs(prots - dish.prots * dishCount),
+      totalFats: Math.abs(fats - dish.fats * dishCount),
+      totalCarbs: Math.abs(carbs - dish.carbs * dishCount),
     },
   });
 };

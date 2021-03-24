@@ -22,17 +22,32 @@
   border-radius: 10px;
   min-width: 320px;
   position: relative;
-  @media screen and (max-width: 360px) {
+  overflow: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media screen and (max-width: 600px) {
     height: 100vh;
     width: 100vw;
     overflow: auto;
   }
+}
+.flex {
+  display: flex;
 }
 .request-form__row {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+}
+.request-form__col {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
 .request-form__label {
   font-size: 18px;
@@ -47,6 +62,7 @@
   border-radius: 10px;
   font-size: 16px;
   transition: 0.3s;
+  resize: none;
   &:focus {
     background-color: white;
     border: 1px solid $cMain;
@@ -73,6 +89,10 @@
     box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
     transform: scale(1);
   }
+}
+
+.width-100 {
+  width: 100%;
 }
 
 @keyframes FadeIn {

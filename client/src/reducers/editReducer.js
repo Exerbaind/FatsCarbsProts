@@ -2,6 +2,8 @@ const initialState = {
   currentDish: {},
   isShown: false,
   editDishesList: [],
+  newDishForm: false,
+  newDishesList: [],
 };
 
 const editReducer = (state = initialState, action) => {
@@ -15,6 +17,16 @@ const editReducer = (state = initialState, action) => {
       return {
         ...state,
         isShown: action.payload.isShown,
+      };
+    case "OPEN_NEW_DISH_FORM":
+      return {
+        ...state,
+        newDishForm: action.payload.newDishForm,
+      };
+    case "CLOSE_NEW_DISH_FORM":
+      return {
+        ...state,
+        newDishForm: action.payload.newDishForm,
       };
     case "CLOSE_FORM":
       return {
@@ -30,6 +42,16 @@ const editReducer = (state = initialState, action) => {
       return {
         ...state,
         editDishesList: action.payload.editDishesList,
+      };
+    case "DELETE_NEW_DISH":
+      return {
+        ...state,
+        newDishesList: action.payload.newDishesList,
+      };
+    case "LOAD_NEW_DISHES":
+      return {
+        ...state,
+        newDishesList: action.payload.newDishesList,
       };
     default:
       return {

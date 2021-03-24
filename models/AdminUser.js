@@ -5,6 +5,7 @@ const schema = new Schema({
   password: { type: String, required: true },
   favorites_dishes: [{ type: Object }],
   edit_dishes: [{ type: Object }],
+  new_dishes: [{ type: Object }],
 });
 
 module.exports = model("AdminUser", schema);

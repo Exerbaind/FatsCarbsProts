@@ -6,7 +6,7 @@ const config = require("config");
 const router = Router();
 const auth = require("../middleware/auth_middleware");
 
-router.post("/favorite", auth, async (req, res) => {
+router.post("/upload", auth, async (req, res) => {
   let dish = req.body.dish;
   let user;
   if (req.user.userId === "60579cfd6716641249bc6ea6") {
@@ -33,7 +33,7 @@ router.post("/favorite", auth, async (req, res) => {
   await user.save();
 });
 
-router.get("/favorite", auth, async (req, res) => {
+router.get("/load", auth, async (req, res) => {
   let dishes;
   if (req.user.userId === "60579cfd6716641249bc6ea6") {
     dishes = await AdminUser.findOne({

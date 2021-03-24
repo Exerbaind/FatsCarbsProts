@@ -10,8 +10,7 @@ const DishEdit = () => {
   const dispatch = useDispatch();
   const currentDish = useSelector((state) => state.edit.currentDish);
   const [isActive, setIsActive] = useState(true);
-  let formData = { ...currentDish };
-  formData.nutritional_value = { ...currentDish.nutritional_value };
+  const [formData, setFormData] = useState({ ...currentDish });
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -23,10 +22,13 @@ const DishEdit = () => {
       window.removeEventListener("keydown", destroyComponent);
     };
   }, [isActive]);
-
   async function sendData(event) {
     event.preventDefault();
     formData.time = Date.now();
+    formData.kcals = +formData.kcals;
+    formData.prots = +formData.prots;
+    formData.fats = +formData.fats;
+    formData.carbs = +formData.carbs;
     try {
       await axios.post("/api/edit/edit-dish", {
         dish: formData,
@@ -46,23 +48,8 @@ const DishEdit = () => {
     }, 2000);
   }
 
-  function dishKcalsHandler(event) {
-    formData.nutritional_value.kcal = +event.target.value;
-  }
-  function dishProtsHandler(event) {
-    formData.nutritional_value.prots = +event.target.value;
-  }
-  function dishFatsHandler(event) {
-    formData.nutritional_value.fats = +event.target.value;
-  }
-  function dishCarbsHandler(event) {
-    formData.nutritional_value.carbs = +event.target.value;
-  }
-  function dishWeightHandler(event) {
-    formData.weight = +event.target.value;
-  }
-  function dishPriceHandler(event) {
-    formData.price = +event.target.value;
+  function formHandler(event) {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   }
 
   function destroyComponent() {
@@ -107,8 +94,8 @@ const DishEdit = () => {
           </label>
           <input
             type="number"
-            placeholder={currentDish.price}
-            onChange={dishPriceHandler}
+            placeholder={currentDish.price || "цена не указана"}
+            onChange={formHandler}
             name="price"
             id="price"
             className="request-form__input"
@@ -122,9 +109,23 @@ const DishEdit = () => {
           <input
             type="number"
             placeholder={currentDish.weight}
-            onChange={dishWeightHandler}
+            onChange={formHandler}
             name="weight"
             id="weight"
+            className="request-form__input"
+            required
+          />
+        </div>
+        <div className="request-form__row">
+          <label htmlFor="size" className="request-form__label">
+            Расчет КБЖУ:
+          </label>
+          <input
+            type="text"
+            placeholder="на 100 грамм / на одну порцию"
+            onChange={formHandler}
+            name="size"
+            id="size"
             className="request-form__input"
             required
           />
@@ -135,8 +136,8 @@ const DishEdit = () => {
           </label>
           <input
             type="number"
-            placeholder={currentDish.nutritional_value.kcal}
-            onChange={dishKcalsHandler}
+            placeholder={currentDish.kcals.toFixed(2)}
+            onChange={formHandler}
             name="kcal"
             id="kcal"
             className="request-form__input"
@@ -150,8 +151,8 @@ const DishEdit = () => {
           </label>
           <input
             type="number"
-            placeholder={currentDish.nutritional_value.prots}
-            onChange={dishProtsHandler}
+            placeholder={currentDish.prots.toFixed(2)}
+            onChange={formHandler}
             name="prots"
             id="prots"
             className="request-form__input"
@@ -165,8 +166,8 @@ const DishEdit = () => {
           </label>
           <input
             type="number"
-            placeholder={currentDish.nutritional_value.fats}
-            onChange={dishFatsHandler}
+            placeholder={currentDish.fats.toFixed(2)}
+            onChange={formHandler}
             name="fats"
             id="fats"
             className="request-form__input"
@@ -180,8 +181,8 @@ const DishEdit = () => {
           </label>
           <input
             type="number"
-            placeholder={currentDish.nutritional_value.carbs}
-            onChange={dishCarbsHandler}
+            placeholder={currentDish.carbs.toFixed(2)}
+            onChange={formHandler}
             name="carbs"
             id="carbs"
             className="request-form__input"

@@ -36,7 +36,7 @@ const Basket = () => {
         <div className="basket__goods">
           {basketItems.length ? (
             basketItems.map((item) => {
-              return <BasketDishes dish={item} key={item.id} />;
+              return <BasketDishes dish={item} key={item._id} />;
             })
           ) : (
             <p className="basket__empty">тут пока ничего нет</p>

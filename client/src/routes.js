@@ -8,6 +8,7 @@ import RestaurantsPage from "./pages/RestaurantsPage";
 import DishesPage from "./pages/DishesPage";
 import RestaurantItemPage from "./pages/restaurant-page/RestaurantItemPage";
 import FoodEditPage from "./pages/editing-pages/FoodEditPage";
+import NewFoodPage from "./pages/editing-pages/NewFoodPage";
 
 export const useRoutes = () => {
   const isAuthenticated = useSelector((state) => state.auth.token);
@@ -38,6 +39,9 @@ export const useRoutes = () => {
         </Route>
         <Route path="/resolve/food-edit" exact>
           <FoodEditPage />
+        </Route>
+        <Route path="/resolve/new-food" exact>
+          <NewFoodPage />
         </Route>
         <Redirect to="/" />
       </Switch>

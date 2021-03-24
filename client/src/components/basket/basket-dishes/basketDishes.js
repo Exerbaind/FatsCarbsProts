@@ -44,25 +44,25 @@ const BasketDishes = ({ dish }) => {
         <div className="basket-dish__nutritional">
           <p className="nutritional__name">калории</p>
           <p className="nutritional__value">
-            {(dish.nutritional_value.kcal * dishCount).toFixed(2)}
+            {(dish.kcals * dishCount).toFixed(2)}
           </p>
         </div>
         <div className="basket-dish__nutritional">
           <p className="nutritional__name">белки</p>
           <p className="nutritional__value">
-            {(dish.nutritional_value.prots * dishCount).toFixed(2)}
+            {(dish.prots * dishCount).toFixed(2)}
           </p>
         </div>
         <div className="basket-dish__nutritional">
           <p className="nutritional__name">жиры</p>
           <p className="nutritional__value">
-            {(dish.nutritional_value.fats * dishCount).toFixed(2)}
+            {(dish.fats * dishCount).toFixed(2)}
           </p>
         </div>
         <div className="basket-dish__nutritional">
           <p className="nutritional__name">углеводы</p>
           <p className="nutritional__value">
-            {(dish.nutritional_value.carbs * dishCount).toFixed(2)}
+            {(dish.carbs * dishCount).toFixed(2)}
           </p>
         </div>
       </div>

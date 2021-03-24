@@ -1219,9 +1219,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 5;
-      -ms-flex: 5;
-          flex: 5;
+  -webkit-box-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1243,6 +1243,9 @@ body {
     pointer-events: none;
     -webkit-transition: 0.3s;
     transition: 0.3s;
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
   }
 }
 
@@ -1349,15 +1352,15 @@ body {
 }
 
 .navbar__login {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .navbar__login button {
@@ -1365,14 +1368,23 @@ body {
 }
 
 @media screen and (max-width: 700px) {
+  .navbar__login button:first-child {
+    margin-right: 15px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   .navbar__login {
-    -webkit-box-flex: 0;
-        -ms-flex: 0;
-            flex: 0;
+    -webkit-box-flex: 6;
+        -ms-flex: 6;
+            flex: 6;
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
     width: 85%;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 }
 
@@ -1794,14 +1806,26 @@ body {
   border-radius: 10px;
   min-width: 320px;
   position: relative;
+  overflow: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 600px) {
   .request-form {
     height: 100vh;
     width: 100vw;
     overflow: auto;
   }
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .request-form__row {
@@ -1814,6 +1838,25 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 10px;
+}
+
+.request-form__col {
+  width: 48%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .request-form__col {
+    width: 100%;
+  }
 }
 
 .request-form__label {
@@ -1830,6 +1873,7 @@ body {
   font-size: 16px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  resize: none;
 }
 
 .request-form__input:focus {
@@ -1863,6 +1907,10 @@ body {
           box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.width-100 {
+  width: 100%;
 }
 
 @-webkit-keyframes FadeIn {
@@ -1908,5 +1956,47 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+.app-new-dish-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 70px;
+  width: 70px;
+  background-color: #92bd88;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+          box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.app-new-dish-button:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+}
+
+.app-new-dish-button:active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+          box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+}
+
+.app-new-dish-button svg {
+  width: 50%;
 }
 /*# sourceMappingURL=App.css.map */

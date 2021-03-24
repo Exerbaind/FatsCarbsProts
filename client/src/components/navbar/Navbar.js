@@ -84,10 +84,22 @@ const Navbar = () => {
                     className="navigation__link"
                     activeClassName="navigation__link--active"
                   >
-                    Запросы
+                    Надо изменить
                   </NavLink>
                 </li>
               )}
+              {isAdmin && (
+                <li className="navigation__item">
+                  <NavLink
+                    to="/resolve/new-food"
+                    className="navigation__link"
+                    activeClassName="navigation__link--active"
+                  >
+                    Надо добавить
+                  </NavLink>
+                </li>
+              )}
+
               {/* {isLogged && (
                 <li className="navigation__item">
                   <NavLink

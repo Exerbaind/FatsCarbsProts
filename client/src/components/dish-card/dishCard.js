@@ -15,11 +15,10 @@ import {
   messageHideAction,
 } from "../../actions/dataActions";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const DishCard = ({ dish }) => {
-  const dishesData = useSelector((state) => state.api.dishesData);
   const dispatch = useDispatch();
-  // const favoriteDishes = useSelector((state) => state.api.favoriteDishes);
+  const favoriteDishes = useSelector((state) => state.api.favoriteDishes);
   const basketItems = useSelector((state) => state.basket.basketItems);
 
   const isLogged = useSelector((state) => state.auth.token);
@@ -31,10 +30,30 @@ const DishCard = ({ dish }) => {
 
   const [isFavoriteDish, setIsFavoriteFavorite] = useState(dish.isFavorite);
 
-  const restaurant = dishesData.filter((item) => +item.id === +dish.restaurant);
+  // function fixNutritionalValue() {
+  //   if (dish.size === "на 100 грамм") {
+  //     dish.kcals = dish.kcals * (dish.weight / 100);
+  //     dish.prots = dish.prots * (dish.weight / 100);
+  //     dish.fats = dish.fats * (dish.weight / 100);
+  //     dish.carbs = dish.carbs * (dish.weight / 100);
+  //   } else {
+  //     return dish;
+  //   }
+  // }
+  // useEffect(() => {
+  //   // fixNutritionalValue();
+  //   if (dish.size === "на 100 грамм") {
+  //     dish.kcals = dish.kcals * (dish.weight / 100);
+  //     dish.prots = dish.prots * (dish.weight / 100);
+  //     dish.fats = dish.fats * (dish.weight / 100);
+  //     dish.carbs = dish.carbs * (dish.weight / 100);
+  //   } else {
+  //     return dish;
+  //   }
+  // }, []);
 
   function addDish(kcal, prots, fats, carbs, dish) {
-    let dishInBasket = basketItems.filter((item) => item.id === dish.id);
+    let dishInBasket = basketItems.filter((item) => item._id === dish._id);
     if (!dishInBasket.length) {
       dispatch(addToBasketAction(dish));
       dispatch(incrementDishAction(kcal, prots, fats, carbs, dish));
@@ -52,11 +71,20 @@ const DishCard = ({ dish }) => {
     dispatch(setCurrentDishAction(dish));
   };
 
+  // function fixNutritionalValue(value, size, weight) {
+  //   if (size === "на 100 грамм") {
+  //     value = value * (weight / 100);
+  //     return value.toFixed(2);
+  //   } else {
+  //     return value.toFixed(2);
+  //   }
+  // }
+
   const favoriteDishHandler = async () => {
     if (dish.inBasket === false) {
       dish.isFavorite = !dish.isFavorite;
       try {
-        await axios.post("/api/dishes/favorite", {
+        await axios.post("/api/favorite/upload", {
           authorization: localStorage.getItem("token"),
           dish: dish,
         });
@@ -113,34 +141,39 @@ const DishCard = ({ dish }) => {
   return (
     <div className="dish-card">
       <p className="dish-card__name">{dish.name}</p>
-      <p className="dish-card__restaurant">
-        {restaurant && restaurant[0].name}
-      </p>
-      <p className="dish-card__parameter">
-        <span>Категория:</span> {dish.category.name}
-      </p>
+      <p className="dish-card__restaurant">{dish.restaurant}</p>
+      {dish.category && (
+        <p className="dish-card__parameter">
+          <span>Категория:</span> {dish.category}
+        </p>
+      )}
+      {dish.price && (
+        <p className="dish-card__parameter">
+          <span>Цена:</span> {dish.price}
+        </p>
+      )}
       <p className="dish-card__parameter">
         <span>Вес:</span> {dish.weight} грамм
       </p>
       <p className="dish-card__parameter">
-        <span>Расчет БЖУ:</span> {dish.nutritional_value.size}
+        <span>Расчет БЖУ:</span> {dish.size}
       </p>
       <div className="dish-card__nutritional">
         <div className="nutritional__item">
           <p className="nutritional__name">калории</p>
-          <p className="nutritional__value">{dish.nutritional_value.kcal}</p>
+          <p className="nutritional__value">{dish.kcals.toFixed(2)}</p>
         </div>
         <div className="nutritional__item">
           <p className="nutritional__name">белки</p>
-          <p className="nutritional__value">{dish.nutritional_value.prots}</p>
+          <p className="nutritional__value">{dish.prots.toFixed(2)}</p>
         </div>
         <div className="nutritional__item">
           <p className="nutritional__name">жиры</p>
-          <p className="nutritional__value">{dish.nutritional_value.fats}</p>
+          <p className="nutritional__value">{dish.fats.toFixed(2)}</p>
         </div>
         <div className="nutritional__item">
           <p className="nutritional__name">углеводы</p>
-          <p className="nutritional__value">{dish.nutritional_value.carbs}</p>
+          <p className="nutritional__value">{dish.carbs.toFixed(2)}</p>
         </div>
       </div>
       <div className="dish-card__actions">

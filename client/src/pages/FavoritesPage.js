@@ -21,7 +21,7 @@ const FavoritesPage = () => {
   function basketChecker() {
     basketItems.map((basketDish) => {
       for (let index = 0; index < favoriteDishes.length; index++) {
-        if (basketDish.id === favoriteDishes[index].id) {
+        if (basketDish._id === favoriteDishes[index]._id) {
           favoriteDishes[index].inBasket = true;
         }
       }
@@ -38,7 +38,7 @@ const FavoritesPage = () => {
         <div className="dish__list">
           {favoriteDishes.length ? (
             favoriteDishes.map((dish) => {
-              return <DishCard dish={dish} key={dish.id} />;
+              return <DishCard dish={dish} key={dish._id} />;
             })
           ) : (
             <p className="empty__list">тут пока ничего нет</p>

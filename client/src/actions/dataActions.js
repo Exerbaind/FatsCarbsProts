@@ -1,11 +1,22 @@
-import foodData from "../api/restaurants";
 import axios from "axios";
 export const loadDishesAction = () => async (dispatch) => {
-  const data = foodData();
+  const dishesAPI = await axios
+    .get("/api/edit/load-dishes")
+    .then((result) => result.data);
+  dishesAPI.map((dish) => {
+    if (dish.size === "на 100 грамм") {
+      dish.kcals = dish.kcals * (dish.weight / 100);
+      dish.prots = dish.prots * (dish.weight / 100);
+      dish.fats = dish.fats * (dish.weight / 100);
+      dish.carbs = dish.carbs * (dish.weight / 100);
+    } else {
+      return dish;
+    }
+  });
   dispatch({
     type: "LOAD_DISHES",
     payload: {
-      dishesData: data,
+      dishesData: dishesAPI,
       isLoading: false,
     },
   });
@@ -13,7 +24,7 @@ export const loadDishesAction = () => async (dispatch) => {
 
 export const loadFavoriteDishesAction = () => async (dispatch) => {
   const dataList = await axios.get(
-    `/api/dishes/favorite?params=${localStorage.getItem("token")}`
+    `/api/favorite/load?params=${localStorage.getItem("token")}`
   );
   dispatch({
     type: "LOAD_FAVORITE_DISHES",
@@ -36,7 +47,7 @@ export const addFavoriteDishAction = (dish) => async (dispatch) => {
 export const removeFavoriteDishAction = (dish, favoriteDishes) => async (
   dispatch
 ) => {
-  let filteredDishes = favoriteDishes.filter((item) => item.id !== dish.id);
+  let filteredDishes = favoriteDishes.filter((item) => item.i_d !== dish._id);
   dispatch({
     type: "REMOVE_FAVORITE_DISH",
     payload: {

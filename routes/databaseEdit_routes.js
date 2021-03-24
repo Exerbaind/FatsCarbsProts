@@ -1,9 +1,20 @@
 const { Router } = require("express");
 const AdminUser = require("../models/AdminUser");
+const Dish = require("../models/Dish");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const router = Router();
 // const auth = require("../middleware/auth_middleware");
+
+router.get("/load-dishes", async (req, res) => {
+  Dish.find({}, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
 
 router.post("/edit-dish", async (req, res) => {
   let dish = req.body.dish;

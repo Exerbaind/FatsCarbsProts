@@ -9,8 +9,9 @@ app.use(express.json({ extended: true }));
 app.use(cors());
 
 app.use("/api/auth", require("./routes/auth_routes"));
-app.use("/api/dishes", require("./routes/dish_routes"));
+app.use("/api/favorite", require("./routes/favoriteFood_routes"));
 app.use("/api/edit", require("./routes/databaseEdit_routes"));
+app.use("/api/new", require("./routes/newFood_routes"));
 
 app.use(async (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

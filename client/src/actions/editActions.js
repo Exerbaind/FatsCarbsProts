@@ -14,6 +14,18 @@ export const openFormAction = {
     isShown: true,
   },
 };
+export const openNewDishFormAction = {
+  type: "OPEN_NEW_DISH_FORM",
+  payload: {
+    newDishForm: true,
+  },
+};
+export const closeNewDishFormAction = {
+  type: "CLOSE_NEW_DISH_FORM",
+  payload: {
+    newDishForm: false,
+  },
+};
 
 export const closeFormAction = {
   type: "CLOSE_FORM",
@@ -38,6 +50,26 @@ export const deleteEditDishAction = (dish, list) => async (dispatch) => {
     type: "DELETE_EDIT_DISH",
     payload: {
       editDishesList: newList,
+    },
+  });
+};
+
+export const deleteNewDishAction = (dish, list) => async (dispatch) => {
+  const newList = list.filter((item) => item._id !== dish._id);
+  dispatch({
+    type: "DELETE_NEW_DISH",
+    payload: {
+      newDishesList: newList,
+    },
+  });
+};
+
+export const loadNewDishesAction = () => async (dispatch) => {
+  const dishesList = await axios.get(`/api/new/load`);
+  dispatch({
+    type: "LOAD_NEW_DISHES",
+    payload: {
+      newDishesList: dishesList.data,
     },
   });
 };

@@ -13,7 +13,7 @@ const FoodEditPage = () => {
   }, [editDishes.length]);
   return (
     <div className="edit-page">
-      <h1 className="edit-page__title">Изменение в блюдах</h1>
+      <h1 className="page__title">Изменение в блюдах</h1>
       <div className="dish__list">
         {editDishes &&
           editDishes.map((dish) => {
