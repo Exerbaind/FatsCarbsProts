@@ -2001,4 +2001,10 @@ body {
   width: 50%;
   height: 50%;
 }
+
+@media screen and (max-width: 700px) {
+  .app-new-dish-button {
+    right: 10px;
+  }
+}
 /*# sourceMappingURL=App.css.map */

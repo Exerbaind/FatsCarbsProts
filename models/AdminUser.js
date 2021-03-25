@@ -6,6 +6,7 @@ const schema = new Schema({
   favorites_dishes: [{ type: Object }],
   edit_dishes: [{ type: Object }],
   new_dishes: [{ type: Object }],
+  new_dishes_photo: [{ type: Object }],
 });
 
 module.exports = model("AdminUser", schema);
