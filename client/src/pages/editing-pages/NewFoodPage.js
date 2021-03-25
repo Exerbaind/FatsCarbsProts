@@ -19,6 +19,14 @@ const NewFoodPage = () => {
     // dispatch(loadDishesAction());
   }, [newDishes.length]);
 
+  function pathCorrect(path) {
+    console.log(path);
+    path = path.split("/");
+    path.splice(0, 2);
+    path = path.join("/");
+    console.log(path);
+    return path;
+  }
   return (
     <div className="edit-page">
       <h1 className="page__title">Новые блюда</h1>
@@ -31,7 +39,14 @@ const NewFoodPage = () => {
       <div>
         {photos &&
           photos.map((item) => {
-            return <img src={`${item.path}`} alt="" height="100" width="200" />;
+            return (
+              <img
+                src={`/${pathCorrect(item.path)}`}
+                alt=""
+                height="100"
+                width="200"
+              />
+            );
           })}
       </div>
     </div>
