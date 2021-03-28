@@ -20,24 +20,24 @@ const NewPhotos = () => {
       window.removeEventListener("keydown", destroyComponent);
     };
   }, [isActive]);
-  // async function sendData(event) {
-  //   event.preventDefault();
-  //   try {
-  //     await axios.post("/api/new/dish-photo");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   destroyComponent();
-  //   dispatch(
-  //     messageShowAction(
-  //       "Спасибо! Обязательно проверим вашие фотографии и внесем изменения",
-  //       "message__context--success"
-  //     )
-  //   );
-  //   setTimeout(() => {
-  //     dispatch(messageHideAction());
-  //   }, 2000);
-  // }
+  async function sendData(event) {
+    event.preventDefault();
+    try {
+      await axios.post("/api/new/dish-photo");
+    } catch (error) {
+      console.log(error);
+    }
+    destroyComponent();
+    dispatch(
+      messageShowAction(
+        "Спасибо! Обязательно проверим вашие фотографии и внесем изменения",
+        "message__context--success"
+      )
+    );
+    setTimeout(() => {
+      dispatch(messageHideAction());
+    }, 2000);
+  }
 
   function destroyComponent() {
     setIsActive(false);
@@ -58,9 +58,6 @@ const NewPhotos = () => {
         method="post"
         action="/api/new/dish-photo"
         encType="multipart/form-data"
-        // onSubmit={(e) => {
-        //   e.preventDefault();
-        // }}
       >
         <button
           className="login__close"

@@ -34,6 +34,7 @@ app.use("/", express.static(path.join(__dirname, "client", "build")));
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "client/build/images");
+    // cb(null, "client/public/images");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
