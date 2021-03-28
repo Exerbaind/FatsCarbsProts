@@ -1,7 +1,6 @@
 const initialState = {
   dishesData: [],
-  favoriteDishes: [],
-  isLoading: true,
+  isLoading: false,
   message: {
     text: "",
     class: "",
@@ -9,29 +8,13 @@ const initialState = {
   },
 };
 
-const basketReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_DISHES":
       return {
         ...state,
         dishesData: action.payload.dishesData,
         isLoading: action.payload.isLoading,
-      };
-    case "LOAD_FAVORITE_DISHES":
-      return {
-        ...state,
-        favoriteDishes: action.payload.favoriteDishes,
-        isLoading: action.payload.isLoading,
-      };
-    case "ADD_FAVORITE_DISH":
-      return {
-        ...state,
-        favoriteDishes: action.payload.favoriteDishes,
-      };
-    case "REMOVE_FAVORITE_DISH":
-      return {
-        ...state,
-        favoriteDishes: action.payload.favoriteDishes,
       };
     case "MESSAGE_SHOW":
       return {
@@ -58,4 +41,4 @@ const basketReducer = (state = initialState, action) => {
   }
 };
 
-export default basketReducer;
+export default dataReducer;

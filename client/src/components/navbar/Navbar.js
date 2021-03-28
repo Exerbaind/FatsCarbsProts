@@ -38,7 +38,7 @@ const Navbar = () => {
         >
           <nav className="navbar__navigation">
             <ul className="navigation__list" onClick={mobileMenuToggle}>
-              <li className="navigation__item">
+              {/* <li className="navigation__item">
                 <NavLink
                   to="/"
                   exact
@@ -47,7 +47,7 @@ const Navbar = () => {
                 >
                   Главная
                 </NavLink>
-              </li>
+              </li> */}
               {/* <li className="navigation__item">
                 <NavLink
                   to="/restaurants"
@@ -59,9 +59,10 @@ const Navbar = () => {
               </li> */}
               <li className="navigation__item">
                 <NavLink
-                  to="/dishes"
+                  to="/"
                   className="navigation__link"
                   activeClassName="navigation__link--active"
+                  exact
                 >
                   Блюда
                 </NavLink>

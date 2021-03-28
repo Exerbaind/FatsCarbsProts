@@ -13,13 +13,15 @@ import Message from "./components/message/message";
 import DishEdit from "./components/forms/DishEdit";
 import DishNew from "./components/forms/DishNew";
 import NewDishButton from "./components/new-dish-button/NewDishButton";
+import NewPhotos from "./components/forms/NewPhotos";
 
 function App() {
   const loginWindowHandler = useSelector(
     (state) => state.auth.loginWindowHandler
   );
-  const formVisibility = useSelector((state) => state.edit.isShown);
-  const newDishForm = useSelector((state) => state.edit.newDishForm);
+  const dishEditForm = useSelector((state) => state.forms.editForm);
+  const dishNewForm = useSelector((state) => state.forms.newDishForm);
+  const photosForm = useSelector((state) => state.forms.photosForm);
   const message = useSelector((state) => state.api.message);
 
   return (
@@ -31,11 +33,11 @@ function App() {
       {loginWindowHandler && <LoginWindow />}
       <PageContainerLayout />
       <Basket />
-      {formVisibility && <DishEdit />}
-      {newDishForm && <DishNew />}
+      {dishEditForm && <DishEdit />}
+      {dishNewForm && <DishNew />}
+      {photosForm && <NewPhotos />}
       <NewDishButton />
-      {/* <Footer /> */}
-      <form
+      {/* <form
         method="post"
         action="/api/new/dish-photo"
         encType="multipart/form-data"
@@ -43,20 +45,13 @@ function App() {
           return false;
         }}
       >
-        <input type="file" name="wallpaper" multiple />
+        <input
+          type="file"
+          name="wallpaper"
+          multiple
+          accept="image/jpeg,image/png,image/gif"
+        />
         <input type="submit" />
-      </form>
-      {/* <img src={image} alt="" height="500" width="400" /> */}
-      {/* <form
-        class="classCard"
-        action="/api/new/photo-upload"
-        method="post"
-        enctype="multipart/form-data"
-        name="nameCard"
-        id="cardId"
-      >
-        <input id="inputId" type="file" name="avatar" />
-        <input id="subId" type="submit" name="subCard" value="sub" />
       </form> */}
     </BrowserRouter>
   );

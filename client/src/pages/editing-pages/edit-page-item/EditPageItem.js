@@ -6,7 +6,7 @@ const EditPageItem = ({ dish }) => {
   const editDishes = useSelector((state) => state.edit.editDishesList);
 
   async function deleteDish(dish, list) {
-    await axios.post("/api/edit/edit-dish/delete", {
+    await axios.post("/api/edit/delete-dish", {
       dish: dish,
     });
     dispatch(deleteEditDishAction(dish, list));

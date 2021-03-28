@@ -9,7 +9,7 @@ const auth = require("../middleware/auth_middleware");
 router.post("/upload", auth, async (req, res) => {
   let dish = req.body.dish;
   let user;
-  if (req.user.userId === "60579cfd6716641249bc6ea6") {
+  if (req.user.userId === "60605ae2eb88814053725f0e") {
     user = await AdminUser.findOne({
       _id: req.user.userId,
     });
@@ -35,7 +35,7 @@ router.post("/upload", auth, async (req, res) => {
 
 router.get("/load", auth, async (req, res) => {
   let dishes;
-  if (req.user.userId === "60579cfd6716641249bc6ea6") {
+  if (req.user.userId === "60605ae2eb88814053725f0e") {
     dishes = await AdminUser.findOne({
       _id: req.user.userId,
     });

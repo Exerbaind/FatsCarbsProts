@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { closeNewDishFormAction } from "../../actions/editActions";
+import { closeNewDishFormAction } from "../../actions/formsActions";
 import {
   messageShowAction,
   messageHideAction,
@@ -47,7 +47,6 @@ const DishNew = () => {
   }
   function formHandler(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
-    console.log(event.target.value);
   }
   async function sendDish(event) {
     event.preventDefault();
@@ -56,10 +55,9 @@ const DishNew = () => {
       form.prots = form.prots * (form.weight / 100);
       form.fats = form.fats * (form.weight / 100);
       form.carbs = form.carbs * (form.weight / 100);
-    } else {
-      return form;
     }
-    await axios.post("/api/new/add", {
+    console.log(form);
+    await axios.post("/api/new/send", {
       dish: form,
     });
     dispatch(
@@ -115,6 +113,44 @@ const DishNew = () => {
               className="request-form__input"
               required
             />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="category" className="request-form__label">
+              Категория:
+            </label>
+            <select
+              name="category"
+              id="category"
+              onChange={formHandler}
+              className="request-form__input"
+            >
+              <option value="" defaultChecked>
+                Не выбрана
+              </option>
+              <option value="азиатский ланч">Азиатский ланч</option>
+              <option value="американский ланч">Американский ланч</option>
+              <option value="бургеры">Бургеры</option>
+              <option value="гарниры">Гарниры</option>
+              <option value="горячее">Горячее</option>
+              <option value="десерты">Десерты</option>
+              <option value="завтраки">Завтраки</option>
+              <option value="закуски">Закуски</option>
+              <option value="ланчи">Ланчи</option>
+              <option value="легкий ланч">Легкий ланч</option>
+              <option value="пицца">Пицца</option>
+              <option value="роллы">Роллы</option>
+              <option value="салаты">Салаты</option>
+              <option value="супы">Супы</option>
+              <option value="суши">Суши</option>
+              <option value="японский ланч">Японский ланч</option>
+              <option value="wok">Wok</option>
+            </select>
+            {/* <input
+              type="text"
+              name="city"
+              id="city"
+              className="request-form__input"
+            /> */}
           </div>
           <div className="request-form__row">
             <label htmlFor="city" className="request-form__label">
@@ -246,8 +282,8 @@ const DishNew = () => {
             <textarea
               name="composition"
               id="composition"
-              cols="30"
-              rows="5"
+              // cols="30"
+              rows="10"
               onChange={formHandler}
               className="request-form__input"
             ></textarea>

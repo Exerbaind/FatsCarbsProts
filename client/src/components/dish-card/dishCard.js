@@ -5,11 +5,8 @@ import {
   incrementDishAction,
   deleteDishAction,
 } from "../../actions/basketAction";
-import {
-  setCurrentDishAction,
-  openFormAction,
-  closeFormAction,
-} from "../../actions/editActions";
+import { setCurrentDishAction } from "../../actions/editActions";
+import { openEditFormAction } from "../../actions/formsActions";
 import {
   messageShowAction,
   messageHideAction,
@@ -18,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 const DishCard = ({ dish }) => {
   const dispatch = useDispatch();
-  const favoriteDishes = useSelector((state) => state.api.favoriteDishes);
+  const favoriteDishes = useSelector((state) => state.favorite.favoriteDishes);
   const basketItems = useSelector((state) => state.basket.basketItems);
 
   const isLogged = useSelector((state) => state.auth.token);
@@ -29,6 +26,18 @@ const DishCard = ({ dish }) => {
   const carbs = useSelector((state) => state.basket.totalCarbs);
 
   const [isFavoriteDish, setIsFavoriteFavorite] = useState(dish.isFavorite);
+  let inBasket = basketItems.filter((item) => item._id === dish._id);
+
+  if (inBasket.length) {
+    dish.inBasket = true;
+  }
+
+  if (isLogged && favoriteDishes.length) {
+    let isFavorite = favoriteDishes.filter((item) => item._id === dish._id);
+    if (isFavorite.length) {
+      dish.isFavorite = true;
+    }
+  }
 
   // function fixNutritionalValue() {
   //   if (dish.size === "на 100 грамм") {
@@ -67,7 +76,7 @@ const DishCard = ({ dish }) => {
   }
 
   const editDishData = async (dish) => {
-    dispatch(openFormAction);
+    dispatch(openEditFormAction);
     dispatch(setCurrentDishAction(dish));
   };
 

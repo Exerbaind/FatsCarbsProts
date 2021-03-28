@@ -23,14 +23,15 @@ export const useRoutes = () => {
           <FavoritesPage />
         </Route>
         <Route path="/" exact>
-          <HomePage />
+          {/* <HomePage /> */}
+          <DishesPage />
         </Route>
         <Route path="/restaurants" exact>
           <RestaurantsPage />
         </Route>
-        <Route path="/dishes" exact>
+        {/* <Route path="/dishes" exact>
           <DishesPage />
-        </Route>
+        </Route> */}
         <Route path="/requests/food-edit" exact>
           <FoodEditPage />
         </Route>
@@ -57,14 +58,15 @@ export const useRoutes = () => {
           <FavoritesPage />
         </Route>
         <Route path="/" exact>
-          <HomePage />
+          {/* <HomePage /> */}
+          <DishesPage />
         </Route>
         <Route path="/restaurants" exact>
           <RestaurantsPage />
         </Route>
-        <Route path="/dishes" exact>
+        {/* <Route path="/dishes" exact>
           <DishesPage />
-        </Route>
+        </Route> */}
         <Route path="/restaurant/:id" exact>
           <RestaurantItemPage />
         </Route>
@@ -75,14 +77,15 @@ export const useRoutes = () => {
   return (
     <Switch>
       <Route path="/" exact>
-        <HomePage />
+        {/* <HomePage /> */}
+        <DishesPage />
       </Route>
       <Route path="/restaurants" exact>
         <RestaurantsPage />
       </Route>
-      <Route path="/dishes" exact>
+      {/* <Route path="/dishes" exact>
         <DishesPage />
-      </Route>
+      </Route> */}
       <Route path="/restaurant/:id" exact>
         <RestaurantItemPage />
       </Route>

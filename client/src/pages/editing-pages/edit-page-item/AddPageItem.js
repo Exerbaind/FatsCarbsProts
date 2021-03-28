@@ -12,6 +12,13 @@ const AddPageItem = ({ dish }) => {
     dispatch(deleteNewDishAction(dish, list));
   }
 
+  async function addDish(dish, list) {
+    await axios.post("/api/new/add", {
+      dish: dish,
+    });
+    deleteDish(dish, list);
+  }
+
   return (
     <div className="dish-card">
       <p className="dish-card__name">{dish.name}</p>
@@ -46,7 +53,12 @@ const AddPageItem = ({ dish }) => {
         </div>
       </div>
       <div className="dish-card__actions edit">
-        <button className="dish-card__edit-refresh">Добавить блюдо</button>
+        <button
+          className="dish-card__edit-refresh"
+          onClick={() => addDish(dish, newDishes)}
+        >
+          Добавить блюдо
+        </button>
         <button
           className="dish-card__edit-delete"
           onClick={() => deleteDish(dish, newDishes)}

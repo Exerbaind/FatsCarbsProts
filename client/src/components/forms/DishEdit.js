@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { closeFormAction } from "../../actions/editActions";
+import { closeEditFormAction } from "../../actions/formsActions";
 import {
   messageShowAction,
   messageHideAction,
@@ -30,7 +30,7 @@ const DishEdit = () => {
     formData.fats = +formData.fats;
     formData.carbs = +formData.carbs;
     try {
-      await axios.post("/api/edit/edit-dish", {
+      await axios.post("/api/edit/send-dish", {
         dish: formData,
       });
     } catch (error) {
@@ -55,7 +55,7 @@ const DishEdit = () => {
   function destroyComponent() {
     setIsActive(false);
     setTimeout(() => {
-      dispatch(closeFormAction);
+      dispatch(closeEditFormAction);
     }, 300);
   }
   return (

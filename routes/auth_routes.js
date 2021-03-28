@@ -44,11 +44,13 @@ router.post(
             { userId: adminUser.id },
             config.get("jwtSecret"),
             {
-              expiresIn: "89666h",
+              expiresIn: "1h",
             }
           );
 
-          return res.json({ token, userId: user.id, admin: true });
+          return res
+            .status(201)
+            .json({ token, userId: adminUser.id, admin: true });
         } else {
           const hashedPassword = await bcrypt.hash(password, 12);
 

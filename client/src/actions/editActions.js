@@ -8,34 +8,8 @@ export const setCurrentDishAction = (dish) => async (dispatch) => {
   });
 };
 
-export const openFormAction = {
-  type: "OPEN_FORM",
-  payload: {
-    isShown: true,
-  },
-};
-export const openNewDishFormAction = {
-  type: "OPEN_NEW_DISH_FORM",
-  payload: {
-    newDishForm: true,
-  },
-};
-export const closeNewDishFormAction = {
-  type: "CLOSE_NEW_DISH_FORM",
-  payload: {
-    newDishForm: false,
-  },
-};
-
-export const closeFormAction = {
-  type: "CLOSE_FORM",
-  payload: {
-    isShown: false,
-  },
-};
-
 export const loadEditDishesAction = () => async (dispatch) => {
-  const dishesList = await axios.get(`/api/edit/edit-dishes`);
+  const dishesList = await axios.get(`/api/edit/load-dishes`);
   dispatch({
     type: "LOAD_EDIT_DISHES",
     payload: {

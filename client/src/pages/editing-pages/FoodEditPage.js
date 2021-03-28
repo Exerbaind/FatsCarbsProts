@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EditPageItem from "./edit-page-item/EditPageItem";
-import { loadDishesAction } from "../../actions/dataActions";
+// import { loadDishesAction } from "../../actions/dataActions";
 
 import { loadEditDishesAction } from "../../actions/editActions";
 const FoodEditPage = () => {
@@ -9,7 +9,7 @@ const FoodEditPage = () => {
   const editDishes = useSelector((state) => state.edit.editDishesList);
   useEffect(() => {
     dispatch(loadEditDishesAction());
-    dispatch(loadDishesAction());
+    // dispatch(loadDishesAction());
   }, [editDishes.length]);
   return (
     <div className="edit-page">

@@ -1,10 +1,10 @@
 const { Router } = require("express");
-const Dish = require("../models/Dish");
 const AdminUser = require("../models/AdminUser");
+const Dish = require("../models/Dish");
 const config = require("config");
 const router = Router();
 
-router.post("/add", async (req, res) => {
+router.post("/send", async (req, res) => {
   let newDish = req.body.dish;
   const dish = new Dish({ ...newDish });
   const user = await AdminUser.findOne({
@@ -13,8 +13,6 @@ router.post("/add", async (req, res) => {
   user.new_dishes.push(dish);
   await user.save();
   res.status(200).json({ message: "новое блюдо" });
-
-  // await dish.save();
 });
 
 router.get("/load", async (req, res) => {
@@ -33,6 +31,13 @@ router.post("/delete", async (req, res) => {
   user.new_dishes = user.new_dishes.filter((item) => item._id != dish._id);
   await user.save();
   res.status(200).json({ message: "блюдо удалено" });
+});
+
+router.post("/add", async (req, res) => {
+  let dish = req.body.dish;
+  const newDish = await Dish({ ...dish });
+  await newDish.save();
+  res.status(200).json({ message: "блюдо добавлено" });
 });
 
 module.exports = router;

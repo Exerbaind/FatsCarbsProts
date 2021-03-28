@@ -40,18 +40,6 @@ body {
   }
 }
 
-.place__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 0 20px 0;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
 .empty__list {
   font-size: 24px;
   color: #161616;
@@ -65,7 +53,7 @@ body {
   }
 }
 
-.dish__list {
+.page__list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,12 +67,27 @@ body {
 }
 
 @media screen and (max-width: 1155px) {
-  .dish__list {
+  .page__list {
     margin-left: 0;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+}
+
+.dish__photo {
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+          box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  width: 31.6%;
+  -webkit-animation: forwards fadeIn 0.3s;
+          animation: forwards fadeIn 0.3s;
+  overflow: hidden;
 }
 
 .restaurant-page__title {
@@ -1959,12 +1962,60 @@ body {
   }
 }
 
-.app-new-dish-button {
+.new-dish__action {
   position: fixed;
   bottom: 20px;
   right: 20px;
   height: 70px;
   width: 70px;
+  z-index: 30;
+}
+
+@media screen and (max-width: 700px) {
+  .new-dish__action {
+    right: 10px;
+  }
+}
+
+.new-dish__menu {
+  position: absolute;
+  left: -275%;
+  top: -90%;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  list-style: none;
+  overflow: hidden;
+  background-color: white;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.new-dish__menu--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.new-dish__menu-item {
+  padding: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.new-dish__menu-item:hover {
+  background-color: rgba(146, 189, 136, 0.5);
+  color: white;
+}
+
+.new-dish__menu-handler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background-color: #92bd88;
   border-radius: 50%;
   display: -webkit-box;
@@ -1985,26 +2036,27 @@ body {
   cursor: pointer;
 }
 
-.app-new-dish-button:hover {
+.new-dish__menu-handler:hover {
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }
 
-.app-new-dish-button:active {
+.new-dish__menu-handler:active {
   -webkit-transform: scale(1);
           transform: scale(1);
   -webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
           box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
 }
 
-.app-new-dish-button svg {
+.new-dish__menu-handler .new-dish__icon {
   width: 50%;
   height: 50%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-@media screen and (max-width: 700px) {
-  .app-new-dish-button {
-    right: 10px;
-  }
+.new-dish__menu-handler .new-dish__icon--active {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 /*# sourceMappingURL=App.css.map */
