@@ -58,9 +58,9 @@ const NewPhotos = () => {
         method="post"
         action="/api/new/dish-photo"
         encType="multipart/form-data"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
+        // onSubmit={(e) => {
+        //   e.preventDefault();
+        // }}
       >
         <button
           className="login__close"
