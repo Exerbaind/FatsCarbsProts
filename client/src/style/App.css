@@ -176,6 +176,51 @@ body {
           transform: scale(1);
 }
 
+.about__information p {
+  font-size: 22px;
+  text-align: justify;
+  margin-top: 15px;
+  line-height: 30px;
+}
+
+.about__information .centered {
+  text-align: center;
+}
+
+.about__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0 100px 0;
+}
+
+.about__icon-link {
+  outline: none;
+  margin: 0 15px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.about__icon-link:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+.about__icon-link:active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.about__icon {
+  height: 40px;
+}
+
 .place__card {
   -webkit-animation: forwards fadeIn 0.3s;
           animation: forwards fadeIn 0.3s;
@@ -854,7 +899,7 @@ body {
   height: 100vh;
   width: auto;
   background-color: white;
-  z-index: 20;
+  z-index: 40;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
           box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   left: -400px;
@@ -1844,6 +1889,10 @@ body {
   margin-top: 10px;
 }
 
+.request-form__row span {
+  margin-top: 7px;
+}
+
 .request-form__col {
   width: 48%;
   display: -webkit-box;
@@ -1883,6 +1932,10 @@ body {
 .request-form__input:focus {
   background-color: white;
   border: 1px solid #92bd88;
+}
+
+.request-form__radio {
+  padding-left: 10px;
 }
 
 .request-form__submit {

@@ -99,7 +99,6 @@ const DishEdit = () => {
             name="price"
             id="price"
             className="request-form__input"
-            required
           />
         </div>
         <div className="request-form__row">
@@ -113,22 +112,43 @@ const DishEdit = () => {
             name="weight"
             id="weight"
             className="request-form__input"
+            defaultValue={formData.weight}
             required
           />
         </div>
         <div className="request-form__row">
           <label htmlFor="size" className="request-form__label">
-            Расчет КБЖУ:
+            Расчет КБЖУ:*
           </label>
-          <input
-            type="text"
-            placeholder="на 100 грамм / на одну порцию"
-            onChange={formHandler}
-            name="size"
-            id="size"
-            className="request-form__input"
-            required
-          />
+          <span>
+            <input
+              type="radio"
+              name="size"
+              id="sizePortion"
+              value="на одну порцию"
+              defaultChecked={formData.size === "на одну порцию" && true}
+              onChange={formHandler}
+              required
+            />
+            <label htmlFor="sizePortion" className="request-form__radio">
+              на одну порцию
+            </label>
+          </span>
+          <span>
+            <input
+              type="radio"
+              name="size"
+              id="sizeGram"
+              value="на 100 грамм"
+              onChange={formHandler}
+              className="request-form__radio"
+              defaultChecked={formData.size === "на 100 грамм" && true}
+              required
+            />
+            <label htmlFor="sizeGram" className="request-form__radio">
+              на 100 грамм
+            </label>
+          </span>
         </div>
         <div className="request-form__row">
           <label htmlFor="kcal" className="request-form__label">
@@ -143,6 +163,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
+            defaultValue={formData.kcals}
           />
         </div>
         <div className="request-form__row">
@@ -158,6 +179,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
+            defaultValue={formData.prots}
           />
         </div>
         <div className="request-form__row">
@@ -173,6 +195,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
+            defaultValue={formData.fats}
           />
         </div>
         <div className="request-form__row">
@@ -188,6 +211,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
+            defaultValue={formData.carbs}
           />
         </div>
         <div className="request-form__row">

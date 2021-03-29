@@ -47,6 +47,7 @@ const DishNew = () => {
   }
   function formHandler(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
+    console.log(form.size);
   }
   async function sendDish(event) {
     event.preventDefault();
@@ -203,7 +204,9 @@ const DishNew = () => {
                 onChange={formHandler}
                 required
               />
-              <label htmlFor="sizePortion">на одну порцию</label>
+              <label htmlFor="sizePortion" className="request-form__radio">
+                на одну порцию
+              </label>
             </span>
             <span>
               <input
@@ -212,9 +215,12 @@ const DishNew = () => {
                 id="sizeGram"
                 value="на 100 грамм"
                 onChange={formHandler}
+                className="request-form__radio"
                 required
               />
-              <label htmlFor="sizeGram">на 100 грамм</label>
+              <label htmlFor="sizeGram" className="request-form__radio">
+                на 100 грамм
+              </label>
             </span>
           </div>
         </div>

@@ -9,6 +9,7 @@ import DishesPage from "./pages/DishesPage";
 import RestaurantItemPage from "./pages/restaurant-page/RestaurantItemPage";
 import FoodEditPage from "./pages/editing-pages/FoodEditPage";
 import NewFoodPage from "./pages/editing-pages/NewFoodPage";
+import AboutPage from "./pages/about-page/AboutPage";
 
 export const useRoutes = () => {
   const isAuthenticated = useSelector((state) => state.auth.token);
@@ -57,6 +58,9 @@ export const useRoutes = () => {
         <Route path="/favourites" exact>
           <FavoritesPage />
         </Route>
+        <Route path="/about" exact>
+          <AboutPage />
+        </Route>
         <Route path="/" exact>
           {/* <HomePage /> */}
           <DishesPage />
@@ -88,6 +92,9 @@ export const useRoutes = () => {
       </Route> */}
       <Route path="/restaurant/:id" exact>
         <RestaurantItemPage />
+      </Route>
+      <Route path="/about" exact>
+        <AboutPage />
       </Route>
       <Redirect to="/" />
     </Switch>

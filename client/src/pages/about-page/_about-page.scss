@@ -1,0 +1,31 @@
+.about__information {
+  p {
+    font-size: 22px;
+    text-align: justify;
+    margin-top: 15px;
+    line-height: 30px;
+  }
+  .centered {
+    text-align: center;
+  }
+}
+.about__icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 100px 0;
+}
+.about__icon-link {
+  outline: none;
+  margin: 0 15px;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.03);
+  }
+  &:active {
+    transform: scale(1);
+  }
+}
+.about__icon {
+  height: 40px;
+}
