@@ -9,6 +9,7 @@ import axios from "axios";
 const NewPhotos = () => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(true);
+  let file;
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -20,10 +21,19 @@ const NewPhotos = () => {
       window.removeEventListener("keydown", destroyComponent);
     };
   }, [isActive]);
+
+  function handleFile(event) {
+    file = event.target.value;
+  }
+
   async function sendData(event) {
     event.preventDefault();
+    file = file.split("\\");
+    file = file[file.length - 1];
     try {
-      await axios.post("/api/new/dish-photo");
+      await axios.post("/api/new/dish-photo", {
+        file: file,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -54,10 +64,11 @@ const NewPhotos = () => {
       }`}
     >
       <form
-        className="request-form flex"
-        method="post"
-        action="/api/new/dish-photo"
+        className="request-form"
+        // method="post"
+        // action="/api/new/dish-photo"
         encType="multipart/form-data"
+        onSubmit={sendData}
       >
         <button
           className="login__close"
@@ -69,8 +80,8 @@ const NewPhotos = () => {
         <input
           type="file"
           name="wallpaper"
-          multiple
           accept="image/jpeg,image/png,image/gif"
+          onChange={handleFile}
         />
         <input type="submit" />
       </form>

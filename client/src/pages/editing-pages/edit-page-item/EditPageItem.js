@@ -12,6 +12,13 @@ const EditPageItem = ({ dish }) => {
     dispatch(deleteEditDishAction(dish, list));
   }
 
+  async function updateDish(dish, list) {
+    await axios.post("/api/edit/update-dish", {
+      dish: dish,
+    });
+    deleteDish(dish, list);
+  }
+
   return (
     <div className="dish-card">
       <p className="dish-card__name">{dish.name}</p>
@@ -41,7 +48,12 @@ const EditPageItem = ({ dish }) => {
         </div>
       </div>
       <div className="dish-card__actions edit">
-        <button className="dish-card__edit-refresh">Обновить блюдо</button>
+        <button
+          className="dish-card__edit-refresh"
+          onClick={() => updateDish(dish, editDishes)}
+        >
+          Обновить блюдо
+        </button>
         <button
           className="dish-card__edit-delete"
           onClick={() => deleteDish(dish, editDishes)}

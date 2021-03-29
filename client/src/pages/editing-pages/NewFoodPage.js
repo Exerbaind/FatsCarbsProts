@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AddPageItem from "./edit-page-item/AddPageItem";
-import { loadDishesAction } from "../../actions/dataActions";
+// import { loadDishesAction } from "../../actions/dataActions";
 import { loadNewDishesAction } from "../../actions/editActions";
 import axios from "axios";
 
@@ -17,14 +17,14 @@ const NewFoodPage = () => {
     // dispatch(loadDishesAction());
   }, [newDishes.length]);
 
-  function pathCorrect(path) {
-    console.log(path);
-    path = path.split("/");
-    path.splice(0, 2);
-    path = path.join("/");
-    console.log(path);
-    return path;
-  }
+  // function pathCorrect(path) {
+  //   console.log(path);
+  //   path = path.split("/");
+  //   path.splice(0, 2);
+  //   path = path.join("/");
+  //   console.log(path);
+  //   return path;
+  // }
   return (
     <div className="edit-page">
       <h1 className="page__title">Новые блюда</h1>
@@ -34,18 +34,18 @@ const NewFoodPage = () => {
             return <AddPageItem dish={dish} key={index} />;
           })}
       </div>
-      <div className="page__list">
+      {/* <div className="page__list">
         {photos &&
           photos.map((item) => {
             return (
               <img
-                src={`/${pathCorrect(item.path)}`}
+                src={`client/public/images/${item.filename}`}
                 alt=""
                 className="dish__photo"
               />
             );
           })}
-      </div>
+      </div> */}
     </div>
   );
 };

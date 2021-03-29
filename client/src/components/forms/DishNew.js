@@ -47,7 +47,6 @@ const DishNew = () => {
   }
   function formHandler(event) {
     setForm({ ...form, [event.target.name]: event.target.value });
-    console.log(form.size);
   }
   async function sendDish(event) {
     event.preventDefault();

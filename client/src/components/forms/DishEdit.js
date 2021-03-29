@@ -163,7 +163,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
-            defaultValue={formData.kcals}
+            defaultValue={formData.kcals.toFixed(2)}
           />
         </div>
         <div className="request-form__row">
@@ -179,7 +179,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
-            defaultValue={formData.prots}
+            defaultValue={formData.prots.toFixed(2)}
           />
         </div>
         <div className="request-form__row">
@@ -195,7 +195,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
-            defaultValue={formData.fats}
+            defaultValue={formData.fats.toFixed(2)}
           />
         </div>
         <div className="request-form__row">
@@ -211,7 +211,7 @@ const DishEdit = () => {
             className="request-form__input"
             required
             step="0.01"
-            defaultValue={formData.carbs}
+            defaultValue={formData.carbs.toFixed(2)}
           />
         </div>
         <div className="request-form__row">
