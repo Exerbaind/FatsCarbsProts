@@ -14,7 +14,6 @@ import DishEdit from "./components/forms/DishEdit";
 import DishNew from "./components/forms/DishNew";
 import NewDishButton from "./components/new-dish-button/NewDishButton";
 import NewPhotos from "./components/forms/NewPhotos";
-import Footer from "./components/footer/Footer";
 
 function App() {
   const loginWindowHandler = useSelector(
