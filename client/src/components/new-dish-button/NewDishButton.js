@@ -21,12 +21,12 @@ const NewDishButton = () => {
         >
           Добавить блюдо
         </li>
-        <li
+        {/* <li
           className="new-dish__menu-item"
           onClick={() => dispatch(openPhotosFormAction)}
         >
           Загрузить фотографии
-        </li>
+        </li> */}
       </ul>
       <button
         className="new-dish__menu-handler"
