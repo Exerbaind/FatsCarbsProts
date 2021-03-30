@@ -29,6 +29,7 @@ const DishEdit = () => {
     formData.prots = +formData.prots;
     formData.fats = +formData.fats;
     formData.carbs = +formData.carbs;
+    console.log(formData);
     try {
       await axios.post("/api/edit/send-dish", {
         dish: formData,
@@ -66,7 +67,7 @@ const DishEdit = () => {
           : "request-form__container--hide"
       }`}
     >
-      <form className="request-form" onSubmit={sendData}>
+      <form className="request-form flex" onSubmit={sendData}>
         <button
           className="login__close"
           type="button"
@@ -74,145 +75,193 @@ const DishEdit = () => {
         >
           <span></span>
         </button>
-        <div className="request-form__row">
-          <label htmlFor="name" className="request-form__label">
-            Название блюда:
-          </label>
-          <input
-            type="text"
-            value={currentDish.name}
-            disabled
-            name="name"
-            id="name"
-            className="request-form__input"
-            required
-          />
-        </div>
-        <div className="request-form__row">
-          <label htmlFor="price" className="request-form__label">
-            Цена:
-          </label>
-          <input
-            type="number"
-            placeholder={currentDish.price || "цена не указана"}
-            onChange={formHandler}
-            name="price"
-            id="price"
-            className="request-form__input"
-          />
-        </div>
-        <div className="request-form__row">
-          <label htmlFor="weight" className="request-form__label">
-            Вес:
-          </label>
-          <input
-            type="number"
-            placeholder={currentDish.weight}
-            onChange={formHandler}
-            name="weight"
-            id="weight"
-            className="request-form__input"
-            defaultValue={formData.weight}
-            required
-          />
-        </div>
-        <div className="request-form__row">
-          <label htmlFor="size" className="request-form__label">
-            Расчет КБЖУ:*
-          </label>
-          <span>
+        <div className="request-form__col">
+          <div className="request-form__row">
+            <label htmlFor="name" className="request-form__label">
+              Название блюда:
+            </label>
             <input
-              type="radio"
-              name="size"
-              id="sizePortion"
-              value="на одну порцию"
-              defaultChecked={formData.size === "на одну порцию" && true}
-              onChange={formHandler}
+              type="text"
+              value={currentDish.name}
+              disabled
+              name="name"
+              id="name"
+              className="request-form__input"
               required
             />
-            <label htmlFor="sizePortion" className="request-form__radio">
-              на одну порцию
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="category" className="request-form__label">
+              Категория:
             </label>
-          </span>
-          <span>
+            <select
+              name="category"
+              id="category"
+              className="request-form__input"
+              disabled
+            >
+              <option value={formData.category} defaultChecked>
+                {formData.category}
+              </option>
+            </select>
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="city" className="request-form__label">
+              Город:
+            </label>
             <input
-              type="radio"
-              name="size"
-              id="sizeGram"
-              value="на 100 грамм"
-              onChange={formHandler}
-              className="request-form__radio"
-              defaultChecked={formData.size === "на 100 грамм" && true}
+              type="text"
+              value={formData.city}
+              name="city"
+              id="city"
+              className="request-form__input"
+              disabled
               required
             />
-            <label htmlFor="sizeGram" className="request-form__radio">
-              на 100 грамм
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="price" className="request-form__label">
+              Цена:
             </label>
-          </span>
+            <input
+              type="number"
+              placeholder={currentDish.price || "цена не указана"}
+              onChange={formHandler}
+              defaultValue={formData.price}
+              name="price"
+              id="price"
+              className="request-form__input"
+            />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="weight" className="request-form__label">
+              Вес:
+            </label>
+            <input
+              type="number"
+              placeholder={currentDish.weight}
+              onChange={formHandler}
+              name="weight"
+              id="weight"
+              className="request-form__input"
+              defaultValue={formData.weight}
+              required
+            />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="size" className="request-form__label">
+              Расчет КБЖУ:
+            </label>
+            <span>
+              <input
+                type="radio"
+                name="size"
+                id="sizePortion"
+                value="на одну порцию"
+                defaultChecked={formData.size === "на одну порцию" && true}
+                onChange={formHandler}
+                required
+              />
+              <label htmlFor="sizePortion" className="request-form__radio">
+                на одну порцию
+              </label>
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="size"
+                id="sizeGram"
+                value="на 100 грамм"
+                onChange={formHandler}
+                className="request-form__radio"
+                defaultChecked={formData.size === "на 100 грамм" && true}
+                required
+              />
+              <label htmlFor="sizeGram" className="request-form__radio">
+                на 100 грамм
+              </label>
+            </span>
+          </div>
         </div>
-        <div className="request-form__row">
-          <label htmlFor="kcal" className="request-form__label">
-            Калории:
-          </label>
-          <input
-            type="number"
-            placeholder={currentDish.kcals.toFixed(2)}
-            onChange={formHandler}
-            name="kcal"
-            id="kcal"
-            className="request-form__input"
-            required
-            step="0.01"
-            defaultValue={formData.kcals.toFixed(2)}
-          />
-        </div>
-        <div className="request-form__row">
-          <label htmlFor="prots" className="request-form__label">
-            Белки:
-          </label>
-          <input
-            type="number"
-            placeholder={currentDish.prots.toFixed(2)}
-            onChange={formHandler}
-            name="prots"
-            id="prots"
-            className="request-form__input"
-            required
-            step="0.01"
-            defaultValue={formData.prots.toFixed(2)}
-          />
-        </div>
-        <div className="request-form__row">
-          <label htmlFor="fats" className="request-form__label">
-            Жиры:
-          </label>
-          <input
-            type="number"
-            placeholder={currentDish.fats.toFixed(2)}
-            onChange={formHandler}
-            name="fats"
-            id="fats"
-            className="request-form__input"
-            required
-            step="0.01"
-            defaultValue={formData.fats.toFixed(2)}
-          />
-        </div>
-        <div className="request-form__row">
-          <label htmlFor="carbs" className="request-form__label">
-            Углеводы:
-          </label>
-          <input
-            type="number"
-            placeholder={currentDish.carbs.toFixed(2)}
-            onChange={formHandler}
-            name="carbs"
-            id="carbs"
-            className="request-form__input"
-            required
-            step="0.01"
-            defaultValue={formData.carbs.toFixed(2)}
-          />
+        <div className="request-form__col">
+          <div className="request-form__row">
+            <label htmlFor="kcal" className="request-form__label">
+              Калории:
+            </label>
+            <input
+              type="number"
+              placeholder={currentDish.kcals}
+              onChange={formHandler}
+              name="kcals"
+              id="kcals"
+              className="request-form__input"
+              required
+              step="0.01"
+              defaultValue={formData.kcals}
+            />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="prots" className="request-form__label">
+              Белки:
+            </label>
+            <input
+              type="number"
+              placeholder={currentDish.prots.toFixed(2)}
+              onChange={formHandler}
+              name="prots"
+              id="prots"
+              className="request-form__input"
+              required
+              step="0.01"
+              defaultValue={formData.prots.toFixed(2)}
+            />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="fats" className="request-form__label">
+              Жиры:
+            </label>
+            <input
+              type="number"
+              placeholder={currentDish.fats.toFixed(2)}
+              onChange={formHandler}
+              name="fats"
+              id="fats"
+              className="request-form__input"
+              required
+              step="0.01"
+              defaultValue={formData.fats.toFixed(2)}
+            />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="carbs" className="request-form__label">
+              Углеводы:
+            </label>
+            <input
+              type="number"
+              placeholder={currentDish.carbs.toFixed(2)}
+              onChange={formHandler}
+              name="carbs"
+              id="carbs"
+              className="request-form__input"
+              required
+              step="0.01"
+              defaultValue={formData.carbs}
+            />
+          </div>
+          <div className="request-form__row">
+            <label htmlFor="composition" className="request-form__label">
+              Состав:
+            </label>
+            <textarea
+              name="composition"
+              id="composition"
+              placeholder={currentDish.composition}
+              defaultValue={formData.composition}
+              rows="7"
+              onChange={formHandler}
+              className="request-form__input"
+            ></textarea>
+          </div>
         </div>
         <div className="request-form__row">
           <input

@@ -29,6 +29,11 @@ const EditPageItem = ({ dish }) => {
       <p className="dish-card__parameter">
         <span>Расчет БЖУ:</span> {dish.size}
       </p>
+      {dish.price && (
+        <p className="dish-card__parameter">
+          <span>Цена:</span> {dish.price}
+        </p>
+      )}
       <div className="dish-card__nutritional">
         <div className="nutritional__item">
           <p className="nutritional__name">калории</p>
@@ -47,6 +52,11 @@ const EditPageItem = ({ dish }) => {
           <p className="nutritional__value">{dish.carbs.toFixed(2)}</p>
         </div>
       </div>
+      {dish.composition && (
+        <p className="dish-card__parameter">
+          <span>Состав:</span> {dish.composition}
+        </p>
+      )}
       <div className="dish-card__actions edit">
         <button
           className="dish-card__edit-refresh"

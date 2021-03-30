@@ -12,7 +12,7 @@ import {
   messageHideAction,
 } from "../../actions/dataActions";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const DishCard = ({ dish }) => {
   const dispatch = useDispatch();
   const favoriteDishes = useSelector((state) => state.favorite.favoriteDishes);
@@ -26,6 +26,7 @@ const DishCard = ({ dish }) => {
   const carbs = useSelector((state) => state.basket.totalCarbs);
 
   const [isFavoriteDish, setIsFavoriteFavorite] = useState(dish.isFavorite);
+  const [isCompositionActive, setIsCompositionActive] = useState(false);
   let inBasket = basketItems.filter((item) => item._id === dish._id);
 
   if (inBasket.length) {
@@ -39,27 +40,9 @@ const DishCard = ({ dish }) => {
     }
   }
 
-  // function fixNutritionalValue() {
-  //   if (dish.size === "на 100 грамм") {
-  //     dish.kcals = dish.kcals * (dish.weight / 100);
-  //     dish.prots = dish.prots * (dish.weight / 100);
-  //     dish.fats = dish.fats * (dish.weight / 100);
-  //     dish.carbs = dish.carbs * (dish.weight / 100);
-  //   } else {
-  //     return dish;
-  //   }
-  // }
-  // useEffect(() => {
-  //   // fixNutritionalValue();
-  //   if (dish.size === "на 100 грамм") {
-  //     dish.kcals = dish.kcals * (dish.weight / 100);
-  //     dish.prots = dish.prots * (dish.weight / 100);
-  //     dish.fats = dish.fats * (dish.weight / 100);
-  //     dish.carbs = dish.carbs * (dish.weight / 100);
-  //   } else {
-  //     return dish;
-  //   }
-  // }, []);
+  function compositionToggle() {
+    setIsCompositionActive(!isCompositionActive);
+  }
 
   function addDish(kcal, prots, fats, carbs, dish) {
     let dishInBasket = basketItems.filter((item) => item._id === dish._id);
@@ -79,15 +62,6 @@ const DishCard = ({ dish }) => {
     dispatch(openEditFormAction);
     dispatch(setCurrentDishAction(dish));
   };
-
-  // function fixNutritionalValue(value, size, weight) {
-  //   if (size === "на 100 грамм") {
-  //     value = value * (weight / 100);
-  //     return value.toFixed(2);
-  //   } else {
-  //     return value.toFixed(2);
-  //   }
-  // }
 
   const favoriteDishHandler = async () => {
     if (dish.inBasket === false) {
@@ -149,6 +123,48 @@ const DishCard = ({ dish }) => {
   }
   return (
     <div className="dish-card">
+      {dish.composition && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="0 0 512 512"
+          className={`dish-card__composition-svg ${
+            isCompositionActive ? "dish-card__composition-svg--active" : ""
+          }`}
+          onClick={compositionToggle}
+        >
+          <g>
+            <path
+              d="M165,0.008C74.019,0.008,0,74.024,0,164.999c0,90.977,74.019,164.992,165,164.992s165-74.015,165-164.992     C330,74.024,255.981,0.008,165,0.008z M165,299.992c-74.439,0-135-60.557-135-134.992S90.561,30.008,165,30.008     s135,60.557,135,134.991C300,239.436,239.439,299.992,165,299.992z"
+              fill="#161616"
+              className="dish-card__composition-icon"
+            />
+            <path
+              d="M165,130.008c-8.284,0-15,6.716-15,15v99.983c0,8.284,6.716,15,15,15s15-6.716,15-15v-99.983     C180,136.725,173.284,130.008,165,130.008z"
+              fill="#161616"
+              className="dish-card__composition-icon"
+            />
+            <path
+              d="M165,70.011c-3.95,0-7.811,1.6-10.61,4.39c-2.79,2.79-4.39,6.66-4.39,10.61s1.6,7.81,4.39,10.61     c2.79,2.79,6.66,4.39,10.61,4.39s7.81-1.6,10.609-4.39c2.79-2.8,4.391-6.66,4.391-10.61s-1.601-7.82-4.391-10.61     C172.81,71.61,168.95,70.011,165,70.011z"
+              fill="#161616"
+              className="dish-card__composition-icon"
+            />
+          </g>
+        </svg>
+      )}
+      {dish.composition && (
+        <div
+          className={`dish-card__composition ${
+            isCompositionActive ? "dish-card__composition--active" : ""
+          }`}
+        >
+          <p className="dish-card__parameter">
+            <span>Состав:</span> {dish.composition}
+          </p>
+        </div>
+      )}
+
       <p className="dish-card__name">{dish.name}</p>
       <p className="dish-card__restaurant">{dish.restaurant}</p>
       {dish.category && (
@@ -158,7 +174,7 @@ const DishCard = ({ dish }) => {
       )}
       {dish.price && (
         <p className="dish-card__parameter">
-          <span>Цена:</span> {dish.price}
+          <span>Цена:</span> {dish.price} рублей
         </p>
       )}
       <p className="dish-card__parameter">

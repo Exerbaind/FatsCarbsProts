@@ -30,6 +30,7 @@ const DishesPage = () => {
       <SearchField
         setRestaurant={setInputDish}
         searchAction={searchAction}
+        message="введите название блюда, например, &laquo;блин&raquo;"
         placeholder="Какое блюдо вас интересует?"
       />
       <div className="page__list">

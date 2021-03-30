@@ -145,12 +145,6 @@ const DishNew = () => {
               <option value="японский ланч">Японский ланч</option>
               <option value="wok">Wok</option>
             </select>
-            {/* <input
-              type="text"
-              name="city"
-              id="city"
-              className="request-form__input"
-            /> */}
           </div>
           <div className="request-form__row">
             <label htmlFor="city" className="request-form__label">
@@ -287,7 +281,6 @@ const DishNew = () => {
             <textarea
               name="composition"
               id="composition"
-              // cols="30"
               rows="10"
               onChange={formHandler}
               className="request-form__input"

@@ -18,6 +18,7 @@ const SearchField = (props) => {
           <img src={searchIcon} alt="" />
         </div>
       </form>
+      <p className="search__message">{props.message}</p>
     </div>
   );
 };

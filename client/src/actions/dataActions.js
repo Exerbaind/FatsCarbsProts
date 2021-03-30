@@ -14,8 +14,6 @@ export const loadDishesAction = (dishName) => async (dispatch) => {
         dish.prots = dish.prots * (dish.weight / 100);
         dish.fats = dish.fats * (dish.weight / 100);
         dish.carbs = dish.carbs * (dish.weight / 100);
-      } else {
-        return dish;
       }
     });
   }
