@@ -30,7 +30,7 @@ const NewPhotos = () => {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
 
-  function sendData(event) {
+  async function sendData(event) {
     event.preventDefault();
     const data = new FormData();
     for (let i = 0; i < files.length; i++) {
@@ -39,7 +39,7 @@ const NewPhotos = () => {
       data.append("file", files[i]);
     }
     try {
-      axios.post("/api/photo/upload", data);
+      await axios.post("/api/photo/upload", data);
     } catch (error) {
       console.log(error);
     }
