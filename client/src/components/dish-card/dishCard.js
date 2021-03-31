@@ -180,9 +180,9 @@ const DishCard = ({ dish }) => {
       <p className="dish-card__parameter">
         <span>Вес:</span> {dish.weight} грамм
       </p>
-      <p className="dish-card__parameter">
+      {/* <p className="dish-card__parameter">
         <span>Расчет БЖУ:</span> {dish.size}
-      </p>
+      </p> */}
       <div className="dish-card__nutritional">
         <div className="nutritional__item">
           <p className="nutritional__name">калории</p>
