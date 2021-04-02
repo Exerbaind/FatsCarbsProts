@@ -32,8 +32,6 @@ router.post("/upload", upload.array("file", 10), async (req, res) => {
       "images",
       restaurant + new Date().getTime() + ".jpeg"
     );
-    image.restaurant = restaurant;
-    image.city = city;
     sharp(image.path)
       .resize(600, 600)
       .jpeg({
@@ -41,7 +39,12 @@ router.post("/upload", upload.array("file", 10), async (req, res) => {
         chromaSubsampling: "4:4:4",
       })
       .toFile(compressedImage);
-    let dishImage = new DishPhoto({ ...image });
+    let imageToSave = {
+      filename: compressedImage,
+      restaurant: restaurant,
+      city: city,
+    };
+    let dishImage = new DishPhoto({ ...imageToSave });
     user.new_dishes_photo.push(dishImage);
   });
   await user.save();
