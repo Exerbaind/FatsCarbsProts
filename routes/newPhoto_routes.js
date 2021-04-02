@@ -8,7 +8,6 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // cb(null, "client/public/images");
     cb(null, "client/build/images");
-    // cb(null, "images");
   },
   filename: function (req, file, cb) {
     cb(null, new Date().toISOString() + file.originalname);

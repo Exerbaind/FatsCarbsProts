@@ -7,11 +7,13 @@ import {
 } from "../../actions/dataActions";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
+import sendIcon from "../../assets/send.svg";
 const NewPhotos = () => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(true);
   const [files, setFiles] = useState();
   const compressedFiles = [];
+  const [sending, setSending] = useState(false);
   const [form, setForm] = useState({
     restaurant: "",
     city: "",
@@ -34,9 +36,10 @@ const NewPhotos = () => {
 
   async function sendData(event) {
     event.preventDefault();
+    setSending(true);
     const options = {
-      maxSizeMB: 0.5,
-      maxWidthOrHeight: 600,
+      maxSizeMB: 0.7,
+      maxWidthOrHeight: 1000,
       useWebWorker: true,
     };
     for (let i = 0; i < files.length; i++) {
@@ -54,6 +57,7 @@ const NewPhotos = () => {
       await axios.post("/api/photo/upload", data);
     } catch (error) {
       console.log(error);
+      setSending(false);
     }
     destroyComponent();
     dispatch(
@@ -176,14 +180,20 @@ const NewPhotos = () => {
         <span className="request-form__message">
           максимальное количество фото 10
         </span>
-
-        <div className="request-form__row">
-          <input
-            type="submit"
-            value="Отправить"
-            className="request-form__submit"
-          />
-        </div>
+        {sending ? (
+          <div className="request-form__row sending">
+            <p>Секундочку, отправляем...</p>
+            <img src={sendIcon} alt="" />
+          </div>
+        ) : (
+          <div className="request-form__row">
+            <input
+              type="submit"
+              value="Отправить"
+              className="request-form__submit"
+            />
+          </div>
+        )}
       </form>
     </div>
   );
