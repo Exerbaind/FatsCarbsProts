@@ -42,4 +42,18 @@ router.get("/download", async (req, res) => {
   res.json(user.new_dishes_photo);
 });
 
+router.post("/delete", async (req, res) => {
+  const photoID = req.body.id;
+  const user = await AdminUser.findOne({
+    email: "digr98@gmail.com",
+  });
+  user.new_dishes_photo = user.new_dishes_photo.filter(
+    (photo) => photo._id != photoID
+  );
+  await user.save();
+  res.status(200).json({
+    message: "фотографии удалена",
+  });
+});
+
 module.exports = router;

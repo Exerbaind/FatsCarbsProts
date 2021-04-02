@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { closePhotosFormAction } from "../../actions/formsActions";
 import {
   messageShowAction,
@@ -36,6 +36,18 @@ const NewPhotos = () => {
 
   async function sendData(event) {
     event.preventDefault();
+    if (files.length > 10) {
+      dispatch(
+        messageShowAction(
+          "Вы можете отправить не больше 10 фотографий",
+          "message__context--failure"
+        )
+      );
+      setTimeout(() => {
+        dispatch(messageHideAction());
+      }, 2000);
+      return false;
+    }
     setSending(true);
     const options = {
       maxSizeMB: 0.7,
@@ -162,7 +174,7 @@ const NewPhotos = () => {
                   <g xmlns="http://www.w3.org/2000/svg">
                     <g>
                       <polygon
-                        points="352,235.716 276,311.716 276,0 236,0 236,311.716 160,235.716 131.716,264 256,388.284 380.284,264   "
+                        points="352,235.716 276,311.716 276,0 236,0 236,311.716 160,235.716 131.716,264 256,388.284 380.284,264"
                         fill="#ffffff"
                         data-original="#000000"
                         className="send-file-icon__arrow"
