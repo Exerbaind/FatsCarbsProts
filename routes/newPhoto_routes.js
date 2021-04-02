@@ -3,17 +3,16 @@ const router = Router();
 const DishPhoto = require("../models/DishImage");
 const AdminUser = require("../models/AdminUser");
 const multer = require("multer");
-const sharp = require("sharp");
-const path = require("path");
 
 const storage = multer.diskStorage({
-  // destination: function (req, file, cb) {
-  //   cb(null, "client/public/images");
-  //   cb(null, "client/build/images");
-  // },
-  // filename: function (req, file, cb) {
-  //   cb(null, new Date().toISOString() + file.originalname);
-  // },
+  destination: function (req, file, cb) {
+    // cb(null, "client/public/images");
+    cb(null, "client/build/images");
+    // cb(null, "images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  },
 });
 
 const upload = multer({ storage: storage });
@@ -26,25 +25,9 @@ router.post("/upload", upload.array("file", 10), async (req, res) => {
     email: "digr98@gmail.com",
   });
   files.map((image) => {
-    let compressedImage = path.join(
-      "client",
-      "build",
-      "images",
-      restaurant + new Date().getTime() + ".jpeg"
-    );
-    sharp(image.path)
-      .resize(600, 600)
-      .jpeg({
-        quality: 80,
-        chromaSubsampling: "4:4:4",
-      })
-      .toFile(compressedImage);
-    let imageToSave = {
-      filename: compressedImage,
-      restaurant: restaurant,
-      city: city,
-    };
-    let dishImage = new DishPhoto({ ...imageToSave });
+    image.restaurant = restaurant;
+    image.city = city;
+    let dishImage = new DishPhoto({ ...image });
     user.new_dishes_photo.push(dishImage);
   });
   await user.save();

@@ -6,10 +6,12 @@ import {
   messageHideAction,
 } from "../../actions/dataActions";
 import axios from "axios";
+import imageCompression from "browser-image-compression";
 const NewPhotos = () => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(true);
   const [files, setFiles] = useState();
+  const compressedFiles = [];
   const [form, setForm] = useState({
     restaurant: "",
     city: "",
@@ -32,12 +34,22 @@ const NewPhotos = () => {
 
   async function sendData(event) {
     event.preventDefault();
-    const data = new FormData();
+    const options = {
+      maxSizeMB: 0.5,
+      maxWidthOrHeight: 600,
+      useWebWorker: true,
+    };
     for (let i = 0; i < files.length; i++) {
+      let compressedFile = await imageCompression(files[i], options);
+      compressedFiles.push(compressedFile);
+    }
+    const data = new FormData();
+    for (let i = 0; i < compressedFiles.length; i++) {
       data.append("restaurant", form.restaurant);
       data.append("city", form.city);
-      data.append("file", files[i]);
+      data.append("file", compressedFiles[i]);
     }
+
     try {
       await axios.post("/api/photo/upload", data);
     } catch (error) {
@@ -124,8 +136,6 @@ const NewPhotos = () => {
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                xmlnsSvgjs="http://svgjs.com/svgjs"
                 version="1.1"
                 width="512"
                 height="512"

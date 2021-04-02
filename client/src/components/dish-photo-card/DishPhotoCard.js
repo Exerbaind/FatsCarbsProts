@@ -1,13 +1,8 @@
 const DishPhotoCard = ({ photo }) => {
-  function photoPathCrop(photo) {
-    photo = photo.split("/");
-    photo = photo[photo.length - 1];
-    return photo;
-  }
   return (
     <div className="photo-card">
       <img
-        src={`/images/${photoPathCrop(photo.filename)}`}
+        src={`/images/${photo.filename}`}
         alt=""
         className="photo-card__image"
       />
