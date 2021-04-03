@@ -67,7 +67,7 @@ const Navbar = () => {
                   Блюда
                 </NavLink>
               </li>
-              {!isAdmin && (
+              {/* {!isAdmin && (
                 <li className="navigation__item">
                   <NavLink
                     to="/about"
@@ -78,7 +78,7 @@ const Navbar = () => {
                     О приложении
                   </NavLink>
                 </li>
-              )}
+              )} */}
               {isLogged && (
                 <li className="navigation__item">
                   <NavLink

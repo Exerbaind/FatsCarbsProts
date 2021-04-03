@@ -58,9 +58,9 @@ export const useRoutes = () => {
         <Route path="/favourites" exact>
           <FavoritesPage />
         </Route>
-        <Route path="/about" exact>
+        {/* <Route path="/about" exact>
           <AboutPage />
-        </Route>
+        </Route> */}
         <Route path="/" exact>
           {/* <HomePage /> */}
           <DishesPage />
@@ -93,9 +93,9 @@ export const useRoutes = () => {
       <Route path="/restaurant/:id" exact>
         <RestaurantItemPage />
       </Route>
-      <Route path="/about" exact>
+      {/* <Route path="/about" exact>
         <AboutPage />
-      </Route>
+      </Route> */}
       <Redirect to="/" />
     </Switch>
   );
