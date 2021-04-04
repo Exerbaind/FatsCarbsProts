@@ -144,6 +144,7 @@ const DishNew = () => {
               <option value="салаты">Салаты</option>
               <option value="супы">Супы</option>
               <option value="суши">Суши</option>
+              <option value="хлеб">Хлеб</option>
               <option value="японский ланч">Японский ланч</option>
               <option value="wok">Wok</option>
             </select>
