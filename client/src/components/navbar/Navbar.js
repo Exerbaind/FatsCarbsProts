@@ -132,7 +132,7 @@ const Navbar = () => {
             <ApplicationButton name="Выйти" action={logout} />
           ) : (
             <ApplicationButton
-              name="Присоедениться"
+              name="Присоединиться"
               action={() => dispatch(loginWindowShow)}
             />
           )}
