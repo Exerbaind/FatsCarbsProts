@@ -15,7 +15,7 @@ export const loadDishesAction = (dishName) => async (dispatch) => {
         dish.fats = dish.fats * (dish.weight / 100);
         dish.carbs = dish.carbs * (dish.weight / 100);
       }
-    });
+    }); 
     dishesAPI.sort((prev, next) => {
       if (prev.name < next.name) return -1;
       if (prev.name < next.name) return 1;
