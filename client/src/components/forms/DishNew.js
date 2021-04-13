@@ -130,6 +130,7 @@ const DishNew = () => {
               <option value="азиатский ланч">Азиатский ланч</option>
               <option value="американский ланч">Американский ланч</option>
               <option value="бургеры">Бургеры</option>
+              <option value="вафли">Вафли</option>
               <option value="гарниры">Гарниры</option>
               <option value="горячее">Горячее</option>
               <option value="десерты">Десерты</option>
@@ -140,6 +141,7 @@ const DishNew = () => {
               <option value="наборы">Наборы</option>
               <option value="паста">Паста</option>
               <option value="пицца">Пицца</option>
+              <option value="ребра">Ребра</option>
               <option value="роллы">Роллы</option>
               <option value="салаты">Салаты</option>
               <option value="стейки">Стейки</option>
